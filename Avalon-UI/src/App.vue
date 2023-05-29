@@ -23,7 +23,7 @@ onMounted(() => {
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
-      <button @click="increment">Count is: {{ count }}</button>
+      <button @click="increment">Count   is: {{ count }}</button>
     </div>
   </header>
 
