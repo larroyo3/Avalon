@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  avalon:
+    build: ./Avalon-UI
+    container_name: avalon-ui
+    ports:
+      - 8080:8080
+    restart: always
