@@ -1,9 +1,17 @@
 version: '3'
 
 services:
-  avalon:
+  avalon-ui:
     build: ./Avalon-UI
     container_name: avalon-ui
     ports:
       - 8080:8080
+    restart: always
+  avalon-api:
+    build: ./Avalon-API
+    ports: 
+      - "9001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     restart: always
