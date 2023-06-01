@@ -1,20 +1,41 @@
-<script setup>
+<script lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
-import { ref, onMounted } from 'vue'
 
-// reactive state
-const count = ref(0)
+export default {
+  components: {
+    HelloWorld,
+    TheWelcome
+  },
 
-// functions that mutate state and trigger updates
-function increment() {
-  count.value++
+  data() {
+    return {
+      count: 0,
+      result: " ",
+      responseAvailable: false,
+
+      requestOptions: {
+        method: 'GET',
+        redirect: 'follow'
+      }
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    },
+
+    fetchAPIData() {
+      fetch("http://localhost:5048/api/TodoItems", this.requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error ::', error));
+    }
+  },
+
+  async mounted() {
+  }
 }
-
-// lifecycle hooks
-onMounted(() => {
-  console.log(`The initial count is ${count.value}.`)
-})
 </script>
 
 <template>
@@ -23,7 +44,15 @@ onMounted(() => {
 
     <div class="wrapper">
       <HelloWorld msg="You did it Lucas!" />
-      <button @click="increment">Count   is: {{ count }}</button>
+      <button @click="increment">Count is: {{ count }}</button>
+      <button type="button" id="get-joke" @click="fetchAPIData">Get a Joke!!</button>
+    </div>
+    <div v-if="responseAvailable == true">
+      <hr>
+      <p>
+        <i>{{ result }}</i>
+      </p>
+      <hr>
     </div>
   </header>
 

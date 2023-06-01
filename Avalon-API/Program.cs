@@ -16,11 +16,21 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment()) {
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+List<string> allowedOrigins = new List<string>
+{
+    "http://localhost:5173",
+    "http://localhost:8080"
+};
+
+app.UseCors(builder => builder.SetIsOriginAllowed(origin => allowedOrigins.Contains(origin))
+    .AllowAnyHeader()
+    .AllowAnyMethod());
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
