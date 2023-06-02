@@ -25,7 +25,8 @@ if (app.Environment.IsDevelopment())
 List<string> allowedOrigins = new List<string>
 {
     "http://localhost:5173",
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "http://localhost:3000"
 };
 
 app.UseCors(builder => builder.SetIsOriginAllowed(origin => allowedOrigins.Contains(origin))
