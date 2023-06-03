@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <div>
     <div class="d-flex flex-row mb-6 bg-surface-variant">
@@ -16,3 +13,6 @@
     </div>
   </div>
 </template>
+
+<script setup>
+</script>

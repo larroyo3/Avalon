@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <div class="d-flex flex-row mb-6 bg-surface-variant">
-      <v-sheet class="ma-2 pa-2">Flex item 1</v-sheet>
-      <v-sheet class="ma-2 pa-2">Flex item 2</v-sheet>
-      <v-sheet class="ma-2 pa-2">cfezgztegtg</v-sheet>
-    </div>
-
-    <div class="d-flex flex-row-reverse mb-6 bg-surface-variant">
-      <v-sheet class="ma-2 pa-2">Flex item 1</v-sheet>
-      <v-sheet class="ma-2 pa-2">Flex item 2</v-sheet>
-      <v-sheet class="ma-2 pa-2">cfezgztegtg</v-sheet>
-    </div>
-  </div>
+  <v-row class="d-flex justify-center ma-6">
+    <v-col cols="2">
+      <v-sheet>
+        Hello
+      </v-sheet>
+    </v-col>
+    <v-col cols="8">
+      <file-pond name="test" ref="pond" label-idle="Drop files here or Browse" v-bind:allow-multiple="false"
+        accepted-file-types="image/jpeg, image/png" v-on:init="handleFilePondInit" v-on:addfile="addFile"	/>
+    </v-col>
+    <v-col cols="2">
+      <v-sheet>
+        Hello
+      </v-sheet>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -43,6 +46,13 @@ export default {
   methods: {
     handleFilePondInit: function () {
       console.log("FilePond has initialized");
+
+      // FilePond instance methods are available on `this.$refs.pond`
+    },
+
+    addFile: function (error, file) {
+      console.log("FilePond has upload");
+      console.log(file)
 
       // FilePond instance methods are available on `this.$refs.pond`
     },
