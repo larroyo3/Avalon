@@ -1,18 +1,8 @@
 <template>
   <v-row class="d-flex justify-center ma-6">
-    <v-col cols="2">
-      <v-sheet>
-        Hello
-      </v-sheet>
-    </v-col>
     <v-col cols="8">
       <file-pond name="test" ref="pond" label-idle="Drop files here or Browse" v-bind:allow-multiple="false"
-        accepted-file-types="image/jpeg, image/png" v-on:init="handleFilePondInit" v-on:addfile="addFile"	/>
-    </v-col>
-    <v-col cols="2">
-      <v-sheet>
-        Hello
-      </v-sheet>
+        accepted-file-types="image/jpeg, image/png" v-on:init="handleFilePondInit" v-on:addfile="addFile" />
     </v-col>
   </v-row>
 </template>
@@ -40,19 +30,22 @@ const FilePond = vueFilePond(
 
 export default {
   name: "create",
-  data: function () {
-    return { myFiles: ["cat.jpeg"] };
+  data() {
+    return {
+      //myFiles,
+    };
   },
   methods: {
-    handleFilePondInit: function () {
+    handleFilePondInit() {
       console.log("FilePond has initialized");
 
       // FilePond instance methods are available on `this.$refs.pond`
     },
 
-    addFile: function (error, file) {
+    addFile(error, file) {
       console.log("FilePond has upload");
       console.log(file)
+      //myFiles = file
 
       // FilePond instance methods are available on `this.$refs.pond`
     },
@@ -63,8 +56,4 @@ export default {
 };
 </script>
 
-<style>
-.div-2 {
-  background-color: #ABBAEA;
-}
-</style>
+<style></style>

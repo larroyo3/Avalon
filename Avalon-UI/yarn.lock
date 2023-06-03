@@ -94,6 +94,16 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@pqina/pintura@^8.x":
+  version "8.58.4"
+  resolved "https://registry.npmjs.org/@pqina/pintura/-/pintura-8.58.4.tgz"
+  integrity sha512-PHsSv8UCWNefidEU9w8vb7TGCuaSPqzVJge4FtqM+1bYJaxIetJuuvWuUgRTbNUrd6pOvBZOxmm1bGz83CmTXw==
+
+"@pqina/vue-pintura@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.npmjs.org/@pqina/vue-pintura/-/vue-pintura-9.0.1.tgz"
+  integrity sha512-D8qvMp0DWfjJV07y/FjfdPNOgg/ouFZhI1v7zAUAp4osNMcNfycz79WzOg8KSN50eAqiE1ybIOWZ38SiZClBIQ==
+
 "@rushstack/eslint-patch@^1.2.0":
   version "1.3.0"
   resolved "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.3.0.tgz"
@@ -1637,7 +1647,7 @@ vue-router@^4.2.0:
   dependencies:
     "@vue/devtools-api" "^6.5.0"
 
-vue@^3.0.1, vue@^3.2.0, vue@^3.2.25, vue@^3.3.2, "vue@>=3 < 4", vue@3.3.4:
+vue@^3.0.1, vue@^3.2.0, vue@^3.2.25, vue@^3.3.2, "vue@>=3 < 4", "vue@2.x - 3.x", vue@3.3.4:
   version "3.3.4"
   resolved "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   integrity sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==
