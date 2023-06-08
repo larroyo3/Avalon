@@ -19,12 +19,12 @@
 
         <v-list density="compact" nav active-color="orange">
           <v-list-item prepend-icon="mdi-home" to="/" title="Home" value="home"></v-list-item>
-          <v-list-item prepend-icon="mdi-plus-box" to="/create" title="Create" value="create"></v-list-item>
+          <v-list-item v-if="login" prepend-icon="mdi-plus-box" to="/create" title="Create" value="create"></v-list-item>
           <v-list-item v-if="login" prepend-icon="mdi-account" to="/account" title="Account"
             value="account"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100vh; width: 100vw;">
+      <v-main>
         <RouterView />
       </v-main>
     </v-layout>
@@ -52,13 +52,6 @@ export default {
     getStarted() {
       this.login = true
     },
-
-    fetchAPIData() {
-      fetch("http://localhost:5048/api/TodoItems", this.requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error ::', error));
-    }
   },
 }
 </script>

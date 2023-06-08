@@ -53,7 +53,7 @@
             </template>
           </v-expansion-panel-title>
           <v-expansion-panel-text>
-            <v-text-field v-model="photo.hashtag" hide-details placeholder="holidays"></v-text-field>
+            <v-text-field prefix="#" v-model="photo.hashtag" hide-details placeholder="holidays"></v-text-field>
           </v-expansion-panel-text>
         </v-expansion-panel>
       </v-expansion-panels>
@@ -96,11 +96,6 @@ export default {
       },
       base64String: '',
       hasFile: false,
-
-      requestOptions: {
-        method: 'GET',
-        redirect: 'follow'
-      }
     };
   },
 
@@ -128,25 +123,17 @@ export default {
     },
 
     uploadPhoto() {
-      console.log(this.photo);
-      console.log(Date().toString().slice(0,10).replace(/-/g,""))
-      console.log(this.photo.image)
       this.fetchAPIData();
     },
 
     fetchAPIData() {
-      fetch("http://localhost:5048/api/TodoItems", this.requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error ::', error));
-
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           authorId: 0,
           publicationDate: Date().toString().slice(0,10).replace(/-/g,""),
-          hashtags: this.photo.hashtag,
+          hashtags: '#' + this.photo.hashtag,
           description: this.photo.description,
           imageData: this.photo.image
         })
