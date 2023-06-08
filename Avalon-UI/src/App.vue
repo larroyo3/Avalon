@@ -1,58 +1,204 @@
 <template>
-  <v-card theme="dark">
-    <v-layout>
-      <v-navigation-drawer expand-on-hover rail :key="navBarPinned" :mini-variant="closed" :expand-on-hover="!navBarPinned" permanent clipped>
-        <v-list v-if="login">
-          <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/34.jpg" title="Sandra Adams"
-            subtitle="sandra_a88@gmailcom">
-          </v-list-item>
-        </v-list>
-        <v-list v-else>
-          <v-list-item prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg">
-            <v-col cols="auto">
-              <v-btn size="small" @click="getStarted" color="orange">Get Started</v-btn>
-            </v-col>
-          </v-list-item>
-        </v-list>
+  <v-dialog v-model="dialog" persistent width="1024">
+    <template v-slot:activator="{ props }">
+      <v-card theme="dark">
+        <v-layout>
+          <v-navigation-drawer expand-on-hover rail :key="navBarPinned" :mini-variant="closed"
+            :expand-on-hover="!navBarPinned" permanent clipped>
+            <v-list v-if="userId != 0">
+              <v-list-item prepend-icon="mdi-account" color="orange" :title="name" :subtitle="'Upload available : ' + remainingPhoto">
+              </v-list-item>
+            </v-list>
+            <v-list v-else>
+              <v-list-item prepend-icon="mdi-account-outline">
+                <v-col cols="auto">
+                  <v-btn size="small" v-bind="props" color="orange">Get Started</v-btn>
+                </v-col>
+              </v-list-item>
+            </v-list>
 
-        <v-divider></v-divider>
+            <v-divider></v-divider>
 
-        <v-list density="compact" nav active-color="orange">
-          <v-list-item prepend-icon="mdi-home" to="/" title="Home" value="home"></v-list-item>
-          <v-list-item v-if="login" prepend-icon="mdi-plus-box" to="/create" title="Create" value="create"></v-list-item>
-          <v-list-item v-if="login" prepend-icon="mdi-account" to="/account" title="Account"
-            value="account"></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <v-main>
-        <RouterView />
-      </v-main>
-    </v-layout>
-  </v-card>
+            <v-list density="compact" nav active-color="orange">
+              <v-list-item prepend-icon="mdi-home" to="/" title="Home" value="home"></v-list-item>
+              <v-list-item v-if="userId != 0" prepend-icon="mdi-plus-box" to="/create" title="Create"
+                value="create"></v-list-item>
+              <v-list-item v-if="userId != 0" prepend-icon="mdi-account" to="/account" title="Account"
+                value="account"></v-list-item>
+            </v-list>
+          </v-navigation-drawer>
+          <v-main>
+            <RouterView :userId="userId"/>
+          </v-main>
+        </v-layout>
+      </v-card>
+    </template>
+
+    <v-card theme="dark">
+      <v-tabs fixed-tabs bg-color="orange" v-model="tab">
+        <v-tab value="registration">
+          Registration
+        </v-tab>
+        <v-tab value="login">
+          Log in
+        </v-tab>
+      </v-tabs>
+
+      <v-window v-model="tab">
+        <v-window-item value="registration">
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12" sm="6" md="6">
+                  <v-text-field v-model="name" :rules="rules" label="Name*" required></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field v-model="password" :rules="rules" label="Password*" type="password" required></v-text-field>
+                </v-col>
+                <v-col cols="12" sm="8">
+                  <v-select :items="packages" v-model="package" item-title="package"
+                    label="Package*" required></v-select>
+                </v-col>
+              </v-row>
+            </v-container>
+            <small>*indicates required field</small>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red" variant="text" @click="dialog = false">
+              Cancel
+            </v-btn>
+            <v-btn color="green" :disabled="isDisabled" variant="text" @click="register">
+              Save
+            </v-btn>
+          </v-card-actions>
+        </v-window-item>
+
+        <v-window-item value="login">
+          <v-card-text>
+            <v-form ref="form">
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="6" md="6">
+                    <v-text-field label="Name*" v-model="name" :rules="rules" required></v-text-field>
+                  </v-col>
+                  <v-col cols="12" md="6">
+                    <v-text-field label="Password*" type="password" v-model="password" :rules="rules"
+                      required></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-form>
+            <small>*indicates required field</small>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="red" variant="text" @click="dialog = false">
+              Cancel
+            </v-btn>
+            <v-btn color="green" :disabled="isDisabled" variant="text" @click="login">
+              Save
+            </v-btn>
+          </v-card-actions>
+        </v-window-item>
+      </v-window>
+
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
 import { RouterView } from 'vue-router'
 
 export default {
+  name: 'App',
+
   data() {
     return {
-      login: false,
+      dialog: false,
+      tab: null,
+      userId: 0,
 
-      responseAvailable: false,
+      valid: false,
+      name: '',
+      password: '',
+      remainingPhoto: 3,
+      package: 'Free (3 daily upload)',
+      packages:['Free (3 daily upload)', 'Pro (10 daily upload)', 'Gold (10000 daily upload)'],
+      rules: [
+        value => {
+          if (value) return true
 
-      requestOptions: {
-        method: 'GET',
-        redirect: 'follow'
-      }
+          return 'Field cannot be empty.'
+        },
+      ],
     }
   },
 
   methods: {
-    getStarted() {
-      this.login = true
+    login() {
+      this.dialog = false;
+      console.log(this.name, this.password)
     },
+
+    register() {
+      this.dialog = false;
+
+      if (this.package == 'Free (3 daily upload)') {
+        this.remainingPhoto = 3
+      } else if (this.package == 'Pro (10 daily upload)') {
+        this.remainingPhoto = 10
+      } else {
+        this.remainingPhoto = 10000
+      }
+
+      this.registerApi()
+    },
+
+    registerApi() {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          name: this.name,
+          profilePhoto: "",
+          remainingPhoto: this.remainingPhoto,
+          package: this.package,
+          password: this.password
+        })
+      };
+      fetch('http://localhost:5048/api/Users', requestOptions)
+        .then(async response => {
+          const data = await response.json();
+
+          if (!response.ok) {
+            const error = (data && data.message) || response.status;
+            return Promise.reject(error);
+          }
+          else {
+            this.userId = data.userId
+            localStorage.setItem('userId', data.userId);
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    }
   },
+
+  computed: {
+    isDisabled() {
+      if(this.name.length > 0 && this.password.length > 0)
+        return false
+
+      return true
+    }
+  },
+
+  mounted() {
+    this.userId = localStorage.getItem('userId') || '0';
+  }
 }
 </script>
 

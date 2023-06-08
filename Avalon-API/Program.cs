@@ -10,6 +10,8 @@ builder.Services.AddDbContext<TodoContext>(opt =>
     opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDbContext<PhotoContext>(opt =>
     opt.UseInMemoryDatabase("Photo"));
+builder.Services.AddDbContext<UserContext>(opt =>
+    opt.UseInMemoryDatabase("User"));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
