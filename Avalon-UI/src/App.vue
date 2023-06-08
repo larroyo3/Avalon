@@ -6,7 +6,8 @@
           <v-navigation-drawer expand-on-hover rail :key="navBarPinned" :mini-variant="closed"
             :expand-on-hover="!navBarPinned" permanent clipped>
             <v-list v-if="userId != 0">
-              <v-list-item prepend-icon="mdi-account" color="orange" :title="name" :subtitle="'Upload available : ' + remainingPhoto">
+              <v-list-item :prepend-avatar="profilePhoto" color="orange" :title="name"
+                :subtitle="'Upload available : ' + remainingPhoto">
               </v-list-item>
             </v-list>
             <v-list v-else>
@@ -28,7 +29,7 @@
             </v-list>
           </v-navigation-drawer>
           <v-main>
-            <RouterView :userId="userId"/>
+            <RouterView :userId="userId" />
           </v-main>
         </v-layout>
       </v-card>
@@ -53,11 +54,11 @@
                   <v-text-field v-model="name" :rules="rules" label="Name*" required></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
-                  <v-text-field v-model="password" :rules="rules" label="Password*" type="password" required></v-text-field>
+                  <v-text-field v-model="password" :rules="rules" label="Password*" type="password"
+                    required></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="8">
-                  <v-select :items="packages" v-model="package" item-title="package"
-                    label="Package*" required></v-select>
+                  <v-select :items="packages" v-model="package" item-title="package" label="Package*" required></v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -123,8 +124,9 @@ export default {
       name: '',
       password: '',
       remainingPhoto: 3,
+      profilePhoto: null,
       package: 'Free (3 daily upload)',
-      packages:['Free (3 daily upload)', 'Pro (10 daily upload)', 'Gold (10000 daily upload)'],
+      packages: ['Free (3 daily upload)', 'Pro (10 daily upload)', 'Gold (10000 daily upload)'],
       rules: [
         value => {
           if (value) return true
@@ -152,6 +154,8 @@ export default {
         this.remainingPhoto = 10000
       }
 
+      console.log("coucou")
+      console.log(this.profilePhoto)
       this.registerApi()
     },
 
@@ -159,9 +163,9 @@ export default {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           name: this.name,
-          profilePhoto: "",
+          profilePhoto: this.profilePhoto,
           remainingPhoto: this.remainingPhoto,
           package: this.package,
           password: this.password
@@ -170,6 +174,7 @@ export default {
       fetch('http://localhost:5048/api/Users', requestOptions)
         .then(async response => {
           const data = await response.json();
+          console.log(this.profilePhoto)
 
           if (!response.ok) {
             const error = (data && data.message) || response.status;
@@ -184,12 +189,63 @@ export default {
           this.errorMessage = error;
           console.error('There was an error!', error);
         });
-    }
+    },
+
+    loadImageFromPath(path) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', path);
+        xhr.responseType = 'blob';
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            resolve(xhr.response);
+          } else {
+            reject(new Error('Impossible de charger l\'image.'));
+          }
+        };
+
+        xhr.onerror = () => {
+          reject(new Error('Erreur lors du chargement de l\'image.'));
+        };
+
+        xhr.send();
+      });
+    },
+
+    convertImageToBase64(imageBlob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+
+        reader.onerror = () => {
+          reject(new Error('Erreur lors de la conversion de l\'image en base64.'));
+        };
+
+        reader.readAsDataURL(imageBlob);
+      });
+    },
+
+    async loadImageAndConvertToBase64(path) {
+      try {
+        const imageBlob = await this.loadImageFromPath(path);
+        const base64Image = await this.convertImageToBase64(imageBlob);
+
+        this.profilePhoto = base64Image
+        console.log(base64Image)
+
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 
   computed: {
     isDisabled() {
-      if(this.name.length > 0 && this.password.length > 0)
+      if (this.name.length > 0 && this.password.length > 0)
         return false
 
       return true
@@ -198,6 +254,7 @@ export default {
 
   mounted() {
     this.userId = localStorage.getItem('userId') || '0';
+    this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
   }
 }
 </script>
