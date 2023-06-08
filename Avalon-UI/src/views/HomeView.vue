@@ -71,7 +71,6 @@ export default {
 
             // Parcourez chaque élément du tableau d'origine
             data.forEach(item => {
-              // Ajoutez "BONJOUR" au début de la valeur de la description
               const modifiedItem = {
                 ...item,
                 imageData: "data:image/png;base64," + item.imageData,
