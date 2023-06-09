@@ -103,8 +103,18 @@
           </v-card-actions>
         </v-window-item>
       </v-window>
-
     </v-card>
+
+    <v-snackbar v-model="snackbar" color="red"
+      variant="tonal" :timeout="timeout">
+      {{ text }}
+
+      <template v-slot:actions>
+        <v-btn color="red" variant="text" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-dialog>
 </template>
 
@@ -119,6 +129,10 @@ export default {
       dialog: false,
       tab: null,
       userId: 0,
+
+      snackbar: false,
+      text: 'Error during log in',
+      timeout: 3000,
 
       valid: false,
       name: '',
@@ -139,7 +153,7 @@ export default {
 
   methods: {
     login() {
-      this.dialog = false;
+      this.loginApi()
     },
 
     register() {
@@ -177,6 +191,40 @@ export default {
           }
           else {
             this.userId = data.id
+            localStorage.setItem('userId', data.id);
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    },
+
+    loginApi() {
+      const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: this.name,
+          password: this.password
+        })
+      };
+      fetch('http://localhost:5048/login', requestOptions)
+        .then(async response => {
+          const data = await response.json();
+
+          if (!response.ok) {
+            const error = (data && data.message) || response.status;
+            this.snackbar = true
+            return Promise.reject(error);
+          }
+          else {
+            this.dialog = false;
+
+            this.userId = data.id
+            this.package = data.package
+            this.remainingPhoto = data.remainingPhoto
+            this.profilePhoto = data.profilePhoto
             localStorage.setItem('userId', data.id);
           }
         })
@@ -275,7 +323,7 @@ export default {
   mounted() {
     this.userId = localStorage.getItem('userId') || '0';
 
-    if(this.userId != 0)
+    if (this.userId != 0)
       this.fetchGetUserById(this.userId)
     this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
   }

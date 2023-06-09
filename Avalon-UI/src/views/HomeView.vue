@@ -160,12 +160,9 @@ export default {
 
   created() {
     this.fetchAPIData();
-    console.log("created")
   },
 
   beforeUpdate() {
-    console.log("beforeUpdate")
-
     this.photos.forEach(photo => {
       var matchingUser = this.userResult.find(user => user.id === photo.authorId);
       if (matchingUser) {
@@ -173,9 +170,6 @@ export default {
         photo.authorProfilePhoto = matchingUser.profilePhoto;
       }
     });
-
-    console.log(this.userResult);
-    console.log(this.photos);
   },
 }
 </script>
