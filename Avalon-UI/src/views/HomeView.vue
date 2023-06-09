@@ -30,8 +30,7 @@
                 <v-card-actions>
                   <v-list-item class="w-100">
                     <template v-slot:prepend>
-                      <v-avatar color="grey-darken-3"
-                        :image="item.authorProfilePhoto"></v-avatar>
+                      <v-avatar color="grey-darken-3" :image="item.authorProfilePhoto"></v-avatar>
                       <v-card-title v-text="item.authorName"></v-card-title>
                     </template>
 
@@ -39,8 +38,12 @@
                       <div class="justify-self-end">
                         <v-btn size="small" :color="item.isLike ? 'red' : 'surface-variant'" variant="text"
                           icon="mdi-heart" @click="toggleLike(item)"></v-btn>
+                        <v-btn v-if="item.authorId == this.$root.userId || this.$root.userId == 1" size="small"
+                          variant="text" icon="mdi-pencil" color="surface-variant" @click="selectEditPost(item)"></v-btn>
                         <v-btn size="small" color="surface-variant" variant="text" icon="mdi-download"
                           @click="downloadImage(item.imageData)"></v-btn>
+                        <v-btn v-if="this.$root.userId == 1" size="small" variant="text" icon="mdi-delete" color="red"
+                          @click="fetchDeletePhoto(item)"></v-btn>
                       </div>
                     </template>
                   </v-list-item>
@@ -57,6 +60,35 @@
       <v-img :src="selectedImage" alt="Image" width="100%" />
     </v-card>
   </v-dialog>
+
+  <v-dialog v-model="isEditPostOpen">
+    <v-card>
+      <v-card-title>Edit photo</v-card-title>
+      <v-card-text>
+        <v-form ref="form">
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field label="Description" v-model="editedPost.description"></v-text-field>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-text-field label="Hashtag" v-model="editedPost.hashtags"></v-text-field>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-form>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="red" variant="text" @click="isEditPostOpen = false">
+          Cancel
+        </v-btn>
+        <v-btn color="green" variant="text" @click="updatePhoto">
+          Save
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -68,13 +100,67 @@ export default {
       photos: [],
       userResult: [],
       result: [],
+      editedPost: null,
 
       isModalOpen: false,
-      selectedImage: ''
+      isEditPostOpen: false,
+      selectedImage: '',
+
+      rules: [
+        value => {
+          if (value) return true
+
+          return 'Field cannot be empty.'
+        },
+      ],
     };
   },
 
   methods: {
+    selectEditPost(item) {
+      console.log(item)
+      this.editedPost = item
+      this.isEditPostOpen = true
+    },
+
+    updatePhoto() {
+      this.isEditPostOpen = false
+      const requestOptions = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: this.editedPost.id,
+          authorId: this.editedPost.authorId,
+          publicationDate: Date.now.toString(),
+          hashtags: this.editedPost.hashtags,
+          description: this.editedPost.description,
+          imageData: this.editedPost.imageData
+        })
+      };
+      fetch(`http://localhost:5048/api/PhotoItems/${this.editedPost.id}`, requestOptions)
+        .then(response => {
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    },
+
+    fetchDeletePhoto(item) {
+      const requestOptions = {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+      };
+      fetch(`http://localhost:5048/api/PhotoItems/${item.id}`, requestOptions)
+        .then(response => {
+          location.reload()
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    },
+
     fetchAPIData() {
       const requestOptions = {
         method: 'GET',
