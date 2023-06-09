@@ -8,20 +8,42 @@
               <v-card>
                 <v-img :src="item.imageData" alt="Image" gradient="to bottom, rgba(0,0,0,.0), rgba(0,0,0,.3)"
                   class="align-end" height="300px" cover @click="openModal(item.imageData)">
-                  <v-card-title class="text-white" v-text="item.hashtags"></v-card-title>
                 </v-img>
-                <v-card-title v-text="item.description">
-                </v-card-title>
 
-                <v-card-subtitle class="text-orange" v-text="item.publicationDate">
-                </v-card-subtitle>
+                <v-list-item class="w-100">
+                  <template v-slot:prepend>
+                    <v-card-text v-text="item.description">
+                    </v-card-text>
+                  </template>
+                  <template v-slot:append>
+                    <div class="justify-self-end">
+                      <v-col>
+                        <v-card-subtitle class="text-orange" v-text="item.hashtags">
+                        </v-card-subtitle>
+                        <v-card-subtitle class="text-orange" v-text="item.publicationDate">
+                        </v-card-subtitle>
+                      </v-col>
+                    </div>
+                  </template>
+                </v-list-item>
 
                 <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn size="small" :color="item.isLike ? 'red' : 'surface-variant'" variant="text" icon="mdi-heart"
-                    @click="toggleLike(item)"></v-btn>
-                  <v-btn size="small" color="surface-variant" variant="text" icon="mdi-download"
-                    @click="downloadImage(item.imageData)"></v-btn>
+                  <v-list-item class="w-100">
+                    <template v-slot:prepend>
+                      <v-avatar color="grey-darken-3"
+                        :image="item.authorProfilePhoto"></v-avatar>
+                      <v-card-title v-text="item.authorName"></v-card-title>
+                    </template>
+
+                    <template v-slot:append>
+                      <div class="justify-self-end">
+                        <v-btn size="small" :color="item.isLike ? 'red' : 'surface-variant'" variant="text"
+                          icon="mdi-heart" @click="toggleLike(item)"></v-btn>
+                        <v-btn size="small" color="surface-variant" variant="text" icon="mdi-download"
+                          @click="downloadImage(item.imageData)"></v-btn>
+                      </div>
+                    </template>
+                  </v-list-item>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -44,6 +66,8 @@ export default {
   data() {
     return {
       photos: [],
+      userResult: [],
+      result: [],
 
       isModalOpen: false,
       selectedImage: ''
@@ -65,14 +89,15 @@ export default {
             return Promise.reject(error);
           }
           else {
-            data.forEach(item => {
-              this.photos.push()
-            });
-
             // Parcourez chaque élément du tableau d'origine
-            data.forEach(item => {
+            data.forEach(async item => {
+
+              this.fetchGetUserById(item.authorId)
+
               const modifiedItem = {
                 ...item,
+                authorName: "loading",
+                authorProfilePhoto: '',
                 imageData: "data:image/png;base64," + item.imageData,
                 isLike: false
               };
@@ -80,6 +105,30 @@ export default {
               // Ajoutez l'élément modifié au nouveau tableau
               this.photos.push(modifiedItem);
             });
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    },
+
+    async fetchGetUserById(userId) {
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      };
+      fetch(`http://localhost:5048/api/Users/${userId}`, requestOptions)
+        .then(async response => {
+          const data = await response.json();
+
+          if (!response.ok) {
+            const error = (data && data.message) || response.status;
+            return Promise.reject(error);
+          }
+          else {
+            this.userResult.push(data);
+            this.$forceUpdate();
           }
         })
         .catch(error => {
@@ -107,7 +156,20 @@ export default {
   },
 
   mounted() {
+  },
+
+  created() {
     this.fetchAPIData();
-  }
+  },
+
+  beforeUpdate() {
+    this.photos.forEach(photo => {
+      var matchingUser = this.userResult.find(user => user.id === photo.authorId);
+      if (matchingUser) {
+        photo.authorName = matchingUser.name;
+        photo.authorProfilePhoto = matchingUser.profilePhoto;
+      }
+    });
+  },
 }
 </script>
