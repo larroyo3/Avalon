@@ -302,7 +302,8 @@ export default {
         const imageBlob = await this.loadImageFromPath(path);
         const base64Image = await this.convertImageToBase64(imageBlob);
 
-        this.profilePhoto = base64Image
+        if (this.profilePhoto == null)
+          this.profilePhoto = base64Image
 
       } catch (error) {
         console.error(error);
@@ -312,12 +313,11 @@ export default {
     setupUserInfo() {
       this.userId = localStorage.getItem('userId') || '0';
       console.log("setup User info")
+      this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
 
       if (this.userId != 0) {
         this.fetchGetUserById(this.userId)
-      } else {
-        this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
-      }
+      } 
     }
   },
 
