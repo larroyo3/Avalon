@@ -29,7 +29,7 @@
             </v-list>
           </v-navigation-drawer>
           <v-main>
-            <RouterView @setupUserInfo="setupUserInfo" :userId="userId" />
+            <RouterView @setupUserInfo="setupUserInfo" :remainingPhoto="remainingPhoto" :userId="userId" />
           </v-main>
         </v-layout>
       </v-card>

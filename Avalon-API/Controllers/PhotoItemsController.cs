@@ -9,10 +9,12 @@ namespace Avalon_API.Controllers;
 public class PhotoItemsController : ControllerBase
 {
     private readonly PhotoContext _context;
+    private readonly UserContext _userContext;
 
-    public PhotoItemsController(PhotoContext context)
+    public PhotoItemsController(PhotoContext context, UserContext userContext)
     {
         _context = context;
+        _userContext = userContext;
     }
 
     // GET: api/PhotoItems
@@ -126,6 +128,22 @@ public class PhotoItemsController : ControllerBase
         _context.PhotoItems.Add(photoItem);
         await _context.SaveChangesAsync();
 
+        var authorItem = await _userContext.Users.FindAsync(photoDTO.AuthorId);
+        if (authorItem == null)
+        {
+            return NotFound();
+        }
+        authorItem.RemainingPhoto = authorItem.RemainingPhoto - 1;
+
+        try
+        {
+            await _userContext.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException) when (!UserExists(authorItem.Id))
+        {
+            return NotFound();
+        }
+
         return CreatedAtAction(
             nameof(GetPhotoItem),
             new { id = photoItem.Id },
@@ -151,6 +169,11 @@ public class PhotoItemsController : ControllerBase
     private bool PhotoItemExists(long id)
     {
         return _context.PhotoItems.Any(e => e.Id == id);
+    }
+
+    private bool UserExists(long id)
+    {
+        return _userContext.Users.Any(e => e.Id == id);
     }
 
     private static PhotoItemDTO ItemToDTO(PhotoItem photoItem)

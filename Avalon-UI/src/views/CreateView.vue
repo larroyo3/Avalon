@@ -37,7 +37,7 @@
             <template v-slot:default="{ expanded }">
               <v-row no-gutters>
                 <v-col cols="4" class="d-flex justify-start">
-                  Hastag 
+                  Hastag
                 </v-col>
                 <v-col cols="8" class="text-grey">
                   <v-fade-transition leave-absolute>
@@ -64,6 +64,15 @@
       <v-btn :disabled="isDisabled" @click="uploadPhoto" block append-icon="mdi-upload" color="orange">upload</v-btn>
     </v-col>
   </v-row>
+  <v-snackbar v-model="snackbar" color="red" variant="tonal" :timeout="timeout">
+    {{ text }}
+
+    <template v-slot:actions>
+      <v-btn color="red" variant="text" @click="snackbar = false">
+        Close
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script>
@@ -96,6 +105,10 @@ export default {
       },
       base64String: '',
       hasFile: false,
+
+      snackbar: false,
+      text: 'No more upload available',
+      timeout: 3000,
     };
   },
 
@@ -123,16 +136,20 @@ export default {
     },
 
     uploadPhoto() {
-      this.fetchAPIData();
+      if (this.$root.remainingPhoto > 0) {
+        this.fetchAPIData();
+      } else {
+        this.snackbar = true
+      }
     },
 
     fetchAPIData() {
       const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           authorId: this.$root.userId,
-          publicationDate: Date().toString().slice(0,10).replace(/-/g,""),
+          publicationDate: Date().toString().slice(0, 10).replace(/-/g, ""),
           hashtags: '#' + this.photo.hashtag,
           description: this.photo.description,
           imageData: this.photo.image
