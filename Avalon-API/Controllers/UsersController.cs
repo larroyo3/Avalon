@@ -56,6 +56,8 @@ public class UsersController : ControllerBase
         user.Name = userDTO.Name;
         user.ProfilePhoto = userDTO.ProfilePhoto;
         user.Package = userDTO.Package;
+        user.Password = userDTO.Password;
+        user.RemainingPhoto = userDTO.RemainingPhoto;
 
         try
         {

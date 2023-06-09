@@ -29,7 +29,7 @@
             </v-list>
           </v-navigation-drawer>
           <v-main>
-            <RouterView :userId="userId" />
+            <RouterView @setupUserInfo="setupUserInfo" :userId="userId" />
           </v-main>
         </v-layout>
       </v-card>
@@ -105,8 +105,7 @@
       </v-window>
     </v-card>
 
-    <v-snackbar v-model="snackbar" color="red"
-      variant="tonal" :timeout="timeout">
+    <v-snackbar v-model="snackbar" color="red" variant="tonal" :timeout="timeout">
       {{ text }}
 
       <template v-slot:actions>
@@ -309,6 +308,17 @@ export default {
         console.error(error);
       }
     },
+
+    setupUserInfo() {
+      this.userId = localStorage.getItem('userId') || '0';
+      console.log("setup User info")
+
+      if (this.userId != 0) {
+        this.fetchGetUserById(this.userId)
+      } else {
+        this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
+      }
+    }
   },
 
   computed: {
@@ -321,11 +331,7 @@ export default {
   },
 
   mounted() {
-    this.userId = localStorage.getItem('userId') || '0';
-
-    if (this.userId != 0)
-      this.fetchGetUserById(this.userId)
-    this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
+    this.setupUserInfo()
   }
 }
 </script>
