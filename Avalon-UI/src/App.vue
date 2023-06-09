@@ -140,7 +140,6 @@ export default {
   methods: {
     login() {
       this.dialog = false;
-      console.log(this.name, this.password)
     },
 
     register() {
@@ -153,9 +152,6 @@ export default {
       } else {
         this.remainingPhoto = 10000
       }
-
-      console.log("coucou")
-      console.log(this.profilePhoto)
       this.registerApi()
     },
 
@@ -174,15 +170,40 @@ export default {
       fetch('http://localhost:5048/api/Users', requestOptions)
         .then(async response => {
           const data = await response.json();
-          console.log(this.profilePhoto)
 
           if (!response.ok) {
             const error = (data && data.message) || response.status;
             return Promise.reject(error);
           }
           else {
-            this.userId = data.userId
-            localStorage.setItem('userId', data.userId);
+            this.userId = data.id
+            localStorage.setItem('userId', data.id);
+          }
+        })
+        .catch(error => {
+          this.errorMessage = error;
+          console.error('There was an error!', error);
+        });
+    },
+
+    fetchGetUserById(userId) {
+      const requestOptions = {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      };
+      fetch(`http://localhost:5048/api/Users/${userId}`, requestOptions)
+        .then(async response => {
+          const data = await response.json();
+
+          if (!response.ok) {
+            const error = (data && data.message) || response.status;
+            return Promise.reject(error);
+          }
+          else {
+            this.name = data.name;
+            this.profilePhoto = data.profilePhoto;
+            this.package = data.package
+            this.remainingPhoto = data.remainingPhoto
           }
         })
         .catch(error => {
@@ -235,7 +256,6 @@ export default {
         const base64Image = await this.convertImageToBase64(imageBlob);
 
         this.profilePhoto = base64Image
-        console.log(base64Image)
 
       } catch (error) {
         console.error(error);
@@ -254,6 +274,9 @@ export default {
 
   mounted() {
     this.userId = localStorage.getItem('userId') || '0';
+
+    if(this.userId != 0)
+      this.fetchGetUserById(this.userId)
     this.loadImageAndConvertToBase64("./src/assets/blank_account.jpg")
   }
 }
