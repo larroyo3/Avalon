@@ -131,7 +131,7 @@ export default {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          authorId: 0,
+          authorId: this.$root.userId,
           publicationDate: Date().toString().slice(0,10).replace(/-/g,""),
           hashtags: '#' + this.photo.hashtag,
           description: this.photo.description,
@@ -147,7 +147,6 @@ export default {
             return Promise.reject(error);
           }
           else {
-            console.log(response.data)
             location.reload();
           }
         })
@@ -155,7 +154,7 @@ export default {
           this.errorMessage = error;
           console.error('There was an error!', error);
         });
-    }
+    },
   },
 
   computed: {
