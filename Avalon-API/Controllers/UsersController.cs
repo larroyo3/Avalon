@@ -9,16 +9,21 @@ namespace Avalon_API.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly UserContext _context;
+    private readonly ILogger _logger;
 
-    public UsersController(UserContext context)
+    public UsersController(UserContext context, ILogger<UsersController> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     // GET: api/Users
     [HttpGet]
     public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
     {
+        _logger.LogInformation("GET users at {DT} by user_id: 1", 
+            DateTime.UtcNow.ToLongTimeString());
+
         return await _context.Users
             .Select(x => ItemToDTO(x))
             .ToListAsync();
@@ -35,6 +40,9 @@ public class UsersController : ControllerBase
             return NotFound();
         }
 
+        _logger.LogInformation("GET user by Id at {DT} by user_id: 1", 
+            DateTime.UtcNow.ToLongTimeString());
+
         return ItemToDTO(user);
     }
 
@@ -42,6 +50,7 @@ public class UsersController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> PutUser(long id, UserDTO userDTO)
     {
+
         if (id != userDTO.Id)
         {
             return BadRequest();
@@ -68,6 +77,9 @@ public class UsersController : ControllerBase
             return NotFound();
         }
 
+        _logger.LogInformation("PUT user name: '{NAME}' at {DT} by user_id : 1", 
+            userDTO.Name, DateTime.UtcNow.ToLongTimeString());
+
         return NoContent();
     }
 
@@ -87,6 +99,9 @@ public class UsersController : ControllerBase
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
+        _logger.LogInformation("POST user name: '{NAME}' at {DT} by user_id : 1", 
+            userDTO.Name, DateTime.UtcNow.ToLongTimeString());
+
         return CreatedAtAction(
             nameof(GetUser),
             new { id = user.Id },
@@ -102,6 +117,9 @@ public class UsersController : ControllerBase
         {
             return NotFound();
         }
+
+        _logger.LogInformation("POST user id: '{ID}' at {DT} by user_id : 1", 
+            id, DateTime.UtcNow.ToLongTimeString());
 
         _context.Users.Remove(user);
         await _context.SaveChangesAsync();
@@ -123,6 +141,9 @@ public class UsersController : ControllerBase
         {
             return BadRequest();
         }
+
+        _logger.LogInformation("POST user name: '{NAME}' at {DT} by user_id : 1", 
+            auth.Name, DateTime.UtcNow.ToLongTimeString());
 
         return ItemToDTO(user);
     }
