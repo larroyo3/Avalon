@@ -10,11 +10,14 @@ public class PhotoItemsController : ControllerBase
 {
     private readonly PhotoContext _context;
     private readonly UserContext _userContext;
+    private readonly ILogger _logger;
 
-    public PhotoItemsController(PhotoContext context, UserContext userContext)
+
+    public PhotoItemsController(PhotoContext context, UserContext userContext, ILogger<UsersController> logger)
     {
         _context = context;
         _userContext = userContext;
+        _logger = logger;
     }
 
     // GET: api/PhotoItems
@@ -36,6 +39,9 @@ public class PhotoItemsController : ControllerBase
 
             photoItemsDTO.Add(dto);
         }
+
+        _logger.LogInformation("GET photos at {DT} by user_id: 1", 
+            DateTime.UtcNow.ToLongTimeString());
 
         return photoItemsDTO;
     }
@@ -59,6 +65,9 @@ public class PhotoItemsController : ControllerBase
             var imagePath = Path.Combine("./images", photoItem.ImagePath);
             dto.ImageData = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync(imagePath));
         }
+
+        _logger.LogInformation("GET photo by id at {DT} by user_id: 1", 
+            DateTime.UtcNow.ToLongTimeString());
 
         return dto;
     }
@@ -91,6 +100,9 @@ public class PhotoItemsController : ControllerBase
         {
             return NotFound();
         }
+
+        _logger.LogInformation("PUT photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'", 
+            photoDTO.Id, DateTime.UtcNow.ToLongTimeString(), photoDTO.AuthorId);
 
         return NoContent();
     }
@@ -144,6 +156,9 @@ public class PhotoItemsController : ControllerBase
             return NotFound();
         }
 
+        _logger.LogInformation("POST photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'", 
+            photoDTO.Id, DateTime.UtcNow.ToLongTimeString(), photoDTO.AuthorId);
+
         return CreatedAtAction(
             nameof(GetPhotoItem),
             new { id = photoItem.Id },
@@ -162,6 +177,9 @@ public class PhotoItemsController : ControllerBase
 
         _context.PhotoItems.Remove(photoItem);
         await _context.SaveChangesAsync();
+
+        _logger.LogInformation("PUT photo at {DT} by author_id : '{AUTHOR}'", 
+            DateTime.UtcNow.ToLongTimeString(), id);
 
         return NoContent();
     }
