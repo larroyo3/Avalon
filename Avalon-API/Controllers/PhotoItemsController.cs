@@ -40,11 +40,6 @@ public class PhotoItemsController : ControllerBase
         //     photoItemsDTO.Add(dto);
         // }
 
-        // _logger.LogInformation("GET photos at {DT} by user_id: 1",
-        //     DateTime.UtcNow.ToLongTimeString());
-
-        // return photoItemsDTO;
-
         var photoItemsDTO = photoItems.Select(async photoItem =>
         {
             var dto = ItemToDTO(photoItem);
