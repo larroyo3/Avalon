@@ -105,7 +105,7 @@ export default {
           password: this.password
         })
       };
-      fetch(`http://localhost:5048/api/Users/${this.$root.userId}`, requestOptions)
+      fetch(`http://localhost:9001/api/Users/${this.$root.userId}`, requestOptions)
         .then(response => {
           console.log("appel parent")
           this.$emit('setupUserInfo');
@@ -140,7 +140,7 @@ export default {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       };
-      fetch(`http://localhost:5048/api/Users/${userId}`, requestOptions)
+      fetch(`http://localhost:9001/api/Users/${userId}`, requestOptions)
         .then(async response => {
           const data = await response.json();
 
@@ -180,13 +180,23 @@ export default {
       image.src = "data:image/png;base64," + this.profilePhoto;
     },
 
+    // getBlobFromBase64_2(base64String) {
+    //   const byteCharacters = atob(base64String);
+
+    //   const byteNumbers = new Array(byteCharacters.length);
+    //   for (let i = 0; i < byteCharacters.length; i++) {
+    //     byteNumbers[i] = byteCharacters.charCodeAt(i);
+    //   }
+
+    //   const byteArray = new Uint8Array(byteNumbers);
+
+    //   return new Blob([byteArray], { type: "image/png" });
+    // },
+
     getBlobFromBase64(base64String) {
       const byteCharacters = atob(base64String);
 
-      const byteNumbers = new Array(byteCharacters.length);
-      for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-      }
+      const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
 
       const byteArray = new Uint8Array(byteNumbers);
 

@@ -180,7 +180,7 @@ export default {
           password: this.password
         })
       };
-      fetch('http://localhost:5048/api/Users', requestOptions)
+      fetch('http://localhost:9001/api/Users', requestOptions)
         .then(async response => {
           const data = await response.json();
 
@@ -208,7 +208,7 @@ export default {
           password: this.password
         })
       };
-      fetch('http://localhost:5048/login', requestOptions)
+      fetch('http://localhost:9001/login', requestOptions)
         .then(async response => {
           const data = await response.json();
 
@@ -238,7 +238,7 @@ export default {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       };
-      fetch(`http://localhost:5048/api/Users/${userId}`, requestOptions)
+      fetch(`http://localhost:9001/api/Users/${userId}`, requestOptions)
         .then(async response => {
           const data = await response.json();
 

@@ -1,4 +1,4 @@
-6/9/2023 11:57:41 PM [Information] Now listening on: http://localhost:5048
+6/9/2023 11:57:41 PM [Information] Now listening on: http://localhost:9001
 6/9/2023 11:57:41 PM [Information] Application started. Press Ctrl+C to shut down.
 6/9/2023 11:57:41 PM [Information] Hosting environment: Development
 6/9/2023 11:57:41 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
@@ -6,7 +6,7 @@
 6/9/2023 11:57:46 PM [Information] GET user at 11:57:46 PM
 6/9/2023 11:58:01 PM [Information] GET user at 11:58:01 PM
 6/9/2023 11:59:32 PM [Information] Application is shutting down...
-6/9/2023 11:59:39 PM [Information] Now listening on: http://localhost:5048
+6/9/2023 11:59:39 PM [Information] Now listening on: http://localhost:9001
 6/9/2023 11:59:39 PM [Information] Application started. Press Ctrl+C to shut down.
 6/9/2023 11:59:39 PM [Information] Hosting environment: Development
 6/9/2023 11:59:39 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
@@ -15,14 +15,14 @@
 6/9/2023 11:59:49 PM [Information] GET user at 11:59:49 PM
 6/9/2023 11:59:57 PM [Information] PUT user at 11:59:57 PM by 1
 6/10/2023 12:00:37 AM [Information] Application is shutting down...
-6/10/2023 12:00:42 AM [Information] Now listening on: http://localhost:5048
+6/10/2023 12:00:42 AM [Information] Now listening on: http://localhost:9001
 6/10/2023 12:00:42 AM [Information] Application started. Press Ctrl+C to shut down.
 6/10/2023 12:00:42 AM [Information] Hosting environment: Development
 6/10/2023 12:00:42 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
 6/10/2023 12:01:01 AM [Warning] Failed to determine the https port for redirect.
 6/10/2023 12:01:01 AM [Information] PUT user name : string at 12:01:01 AM by user_id : 1
 6/10/2023 12:07:55 AM [Information] Application is shutting down...
-6/10/2023 12:07:59 AM [Information] Now listening on: http://localhost:5048
+6/10/2023 12:07:59 AM [Information] Now listening on: http://localhost:9001
 6/10/2023 12:07:59 AM [Information] Application started. Press Ctrl+C to shut down.
 6/10/2023 12:07:59 AM [Information] Hosting environment: Development
 6/10/2023 12:07:59 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
@@ -35,3 +35,9 @@
 6/10/2023 12:09:14 AM [Information] Saved 1 entities to in-memory store.
 6/10/2023 12:09:14 AM [Information] POST photo id: '0' at 12:09:14 AM by author_id : '1'
 6/10/2023 12:10:40 AM [Information] Application is shutting down...
+6/10/2023 9:01:25 AM [Information] Application is shutting down...
+6/15/2023 9:55:25 PM [Information] Now listening on: http://localhost:9001
+6/15/2023 9:55:25 PM [Information] Application started. Press Ctrl+C to shut down.
+6/15/2023 9:55:25 PM [Information] Hosting environment: Development
+6/15/2023 9:55:25 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/15/2023 9:58:04 PM [Information] Application is shutting down...

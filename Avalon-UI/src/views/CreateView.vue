@@ -155,7 +155,7 @@ export default {
           imageData: this.photo.image
         })
       };
-      fetch('http://localhost:5048/api/PhotoItems', requestOptions)
+      fetch('http://localhost:9001/api/PhotoItems', requestOptions)
         .then(async response => {
           const data = await response.json();
 

@@ -137,7 +137,7 @@ export default {
           imageData: this.editedPost.imageData
         })
       };
-      fetch(`http://localhost:5048/api/PhotoItems/${this.editedPost.id}`, requestOptions)
+      fetch(`http://localhost:9001/api/PhotoItems/${this.editedPost.id}`, requestOptions)
         .then(response => {
         })
         .catch(error => {
@@ -151,7 +151,7 @@ export default {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       };
-      fetch(`http://localhost:5048/api/PhotoItems/${item.id}`, requestOptions)
+      fetch(`http://localhost:9001/api/PhotoItems/${item.id}`, requestOptions)
         .then(response => {
           location.reload()
         })
@@ -166,7 +166,7 @@ export default {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       };
-      fetch('http://localhost:5048/api/PhotoItems', requestOptions)
+      fetch('http://localhost:9001/api/PhotoItems', requestOptions)
         .then(async response => {
           const data = await response.json();
 
@@ -204,7 +204,7 @@ export default {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       };
-      fetch(`http://localhost:5048/api/Users/${userId}`, requestOptions)
+      fetch(`http://localhost:9001/api/Users/${userId}`, requestOptions)
         .then(async response => {
           const data = await response.json();
 

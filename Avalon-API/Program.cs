@@ -4,10 +4,10 @@ using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-string logFilePath = "logs/mylog.txt"; // Spécifiez le chemin de fichier souhaité
-builder.Logging.AddProvider(new FileLoggerProvider(logFilePath));
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
+// string logFilePath = "../logs/mylog.txt"; // Spécifiez le chemin de fichier souhaité
+// builder.Logging.AddProvider(new FileLoggerProvider(logFilePath));
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -36,7 +36,8 @@ List<string> allowedOrigins = new List<string>
 {
     "http://localhost:5173",
     "http://localhost:8080",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://127.0.0.1:8080"
 };
 
 app.UseCors(builder => builder.SetIsOriginAllowed(origin => allowedOrigins.Contains(origin))
