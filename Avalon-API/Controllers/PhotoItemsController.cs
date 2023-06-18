@@ -25,9 +25,27 @@ public class PhotoItemsController : ControllerBase
     public async Task<ActionResult<IEnumerable<PhotoItemDTO>>> GetPhotoItems()
     {
         var photoItems = await _context.PhotoItems.ToListAsync();
-        var photoItemsDTO = new List<PhotoItemDTO>();
+        // var photoItemsDTO = new List<PhotoItemDTO>();
 
-        foreach (var photoItem in photoItems)
+        // foreach (var photoItem in photoItems)
+        // {
+        //     var dto = ItemToDTO(photoItem);
+
+        //     if (!string.IsNullOrEmpty(photoItem.ImagePath))
+        //     {
+        //         var imagePath = Path.Combine("./images", photoItem.ImagePath);
+        //         dto.ImageData = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync(imagePath));
+        //     }
+
+        //     photoItemsDTO.Add(dto);
+        // }
+
+        // _logger.LogInformation("GET photos at {DT} by user_id: 1",
+        //     DateTime.UtcNow.ToLongTimeString());
+
+        // return photoItemsDTO;
+
+        var photoItemsDTO = photoItems.Select(async photoItem =>
         {
             var dto = ItemToDTO(photoItem);
 
@@ -37,13 +55,13 @@ public class PhotoItemsController : ControllerBase
                 dto.ImageData = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync(imagePath));
             }
 
-            photoItemsDTO.Add(dto);
-        }
+            return dto;
+        }).ToList();
 
-        _logger.LogInformation("GET photos at {DT} by user_id: 1", 
+        _logger.LogInformation("GET photos at {DT} by user_id: 1",
             DateTime.UtcNow.ToLongTimeString());
 
-        return photoItemsDTO;
+        return Ok(photoItemsDTO);
     }
 
     // GET: api/PhotoItems/5
@@ -66,7 +84,7 @@ public class PhotoItemsController : ControllerBase
             dto.ImageData = Convert.ToBase64String(await System.IO.File.ReadAllBytesAsync(imagePath));
         }
 
-        _logger.LogInformation("GET photo by id at {DT} by user_id: 1", 
+        _logger.LogInformation("GET photo by id at {DT} by user_id: 1",
             DateTime.UtcNow.ToLongTimeString());
 
         return dto;
@@ -101,7 +119,7 @@ public class PhotoItemsController : ControllerBase
             return NotFound();
         }
 
-        _logger.LogInformation("PUT photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'", 
+        _logger.LogInformation("PUT photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'",
             photoDTO.Id, DateTime.UtcNow.ToLongTimeString(), photoDTO.AuthorId);
 
         return NoContent();
@@ -156,7 +174,7 @@ public class PhotoItemsController : ControllerBase
             return NotFound();
         }
 
-        _logger.LogInformation("POST photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'", 
+        _logger.LogInformation("POST photo id: '{ID}' at {DT} by author_id : '{AUTHOR}'",
             photoDTO.Id, DateTime.UtcNow.ToLongTimeString(), photoDTO.AuthorId);
 
         return CreatedAtAction(
@@ -178,7 +196,7 @@ public class PhotoItemsController : ControllerBase
         _context.PhotoItems.Remove(photoItem);
         await _context.SaveChangesAsync();
 
-        _logger.LogInformation("PUT photo at {DT} by author_id : '{AUTHOR}'", 
+        _logger.LogInformation("PUT photo at {DT} by author_id : '{AUTHOR}'",
             DateTime.UtcNow.ToLongTimeString(), id);
 
         return NoContent();
