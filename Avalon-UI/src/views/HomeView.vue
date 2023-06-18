@@ -169,6 +169,7 @@ export default {
       fetch('http://localhost:9001/api/PhotoItems', requestOptions)
         .then(async response => {
           const data = await response.json();
+          console.log(data)
 
           if (!response.ok) {
             const error = (data && data.message) || response.status;
@@ -178,13 +179,13 @@ export default {
             // Parcourez chaque élément du tableau d'origine
             data.forEach(async item => {
 
-              this.fetchGetUserById(item.authorId)
+              this.fetchGetUserById(item.result.authorId)
 
               const modifiedItem = {
-                ...item,
+                ...item.result,
                 authorName: "loading",
                 authorProfilePhoto: '',
-                imageData: "data:image/png;base64," + item.imageData,
+                imageData: "data:image/png;base64," + item.result.imageData,
                 isLike: false
               };
 

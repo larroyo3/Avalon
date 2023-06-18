@@ -26,6 +26,8 @@
                 value="create"></v-list-item>
               <v-list-item v-if="userId != 0" prepend-icon="mdi-account" to="/account" title="Account"
                 value="account"></v-list-item>
+                <v-list-item v-if="userId != 0" prepend-icon="mdi-cog" to="/settings" title="Settings"
+                value="settings"></v-list-item>
             </v-list>
           </v-navigation-drawer>
           <v-main>
