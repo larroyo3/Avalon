@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Avalon_API.Models;
 using Microsoft.Extensions.Logging;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Custom Metrics to count requests for each endpoint and the method
+var counter = Metrics.CreateCounter("peopleapi_path_counter", "Counts requests to the People API endpoints", new CounterConfiguration
+{
+LabelNames = new[] { "method", "endpoint" }
+});
+
+app.UseMetricServer();
+app.UseHttpMetrics();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
