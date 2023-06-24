@@ -14,5 +14,6 @@ RUN dotnet publish --use-current-runtime --self-contained false --no-restore -o 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
+COPY ./images /app/images
 COPY --from=build /app .
 ENTRYPOINT ["dotnet", "Avalon-API.dll"]
