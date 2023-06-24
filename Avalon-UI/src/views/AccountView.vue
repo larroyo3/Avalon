@@ -1,5 +1,6 @@
 <template>
   <v-card theme="dark">
+    <v-card-title class="text-h6 text-md-h5 text-lg-h4 ma-5 text-orange">Edit my profile</v-card-title>
     <v-card-text>
       <v-row>
         <v-col cols="6">
@@ -27,15 +28,16 @@
       </v-btn>
     </v-card-actions>
 
+    <v-card-title class="text-h6 text-md-h5 text-lg-h4 ma-5 text-orange">My upload</v-card-title>
+    <photoCarousel/>
   </v-card>
 </template>
 
 <script>
-
+import photoCarousel from "../components/PhotoCarousel.vue"
 // Import Vue FilePond
 import vueFilePond from "vue-filepond";
 import "filepond/dist/filepond.min.css";
-
 
 // Import image preview plugin styles
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css";
@@ -71,6 +73,7 @@ export default {
 
   components: {
     FilePond,
+    photoCarousel
   },
 
   methods: {

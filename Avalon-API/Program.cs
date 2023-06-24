@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // builder.Logging.ClearProviders();
 // builder.Logging.AddConsole();
-// string logFilePath = "../logs/mylog.txt"; // Spécifiez le chemin de fichier souhaité
+// string logFilePath = "./logs/mylog.txt"; // Spécifiez le chemin de fichier souhaité
 // builder.Logging.AddProvider(new FileLoggerProvider(logFilePath));
 
 // Add services to the container.

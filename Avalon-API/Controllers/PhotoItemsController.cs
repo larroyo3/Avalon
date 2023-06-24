@@ -132,21 +132,17 @@ public class PhotoItemsController : ControllerBase
             Hashtags = photoDTO.Hashtags
         };
 
+        var path = ".";
+        var fullPath = Path.GetFullPath(path);
+        Console.WriteLine(fullPath);
+
         if (!string.IsNullOrEmpty(photoDTO.ImageData))
         {
-            // Convertir les données d'image Base64 en tableau d'octets
             var imageBytes = Convert.FromBase64String(photoDTO.ImageData);
-
-            // Générer un nom de fichier unique pour l'image
             var fileName = Guid.NewGuid().ToString() + ".jpg";
+            var filePath = Path.Combine("/app/images", fileName);
 
-            // Définir le chemin de stockage de l'image sur le serveur
-            var filePath = Path.Combine("./images", fileName);
-
-            // Enregistrer l'image sur le serveur
             await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
-
-            // Assigner le nom de fichier à la propriété ImagePath du modèle PhotoItem
             photoItem.ImagePath = fileName;
         }
 
