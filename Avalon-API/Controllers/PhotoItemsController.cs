@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Avalon_API.Models;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace Avalon_API.Controllers;
 
@@ -22,9 +24,18 @@ public class PhotoItemsController : ControllerBase
 
     // GET: api/PhotoItems
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<PhotoItemDTO>>> GetPhotoItems()
+    public async Task<ActionResult<IEnumerable<PhotoItemDTO>>> GetPhotoItems([FromQuery(Name = "filter")] string filter = "")
     {
-        var photoItems = await _context.PhotoItems.ToListAsync();
+        List<PhotoItem>? photoItems;
+        if (filter != "")
+        {
+            var basketSpec = new PhotoSpecification(filter);
+            photoItems = await _context.PhotoItems.Where(basketSpec.Criteria).ToListAsync();
+        }
+        else
+        {
+            photoItems = await _context.PhotoItems.ToListAsync();
+        }
         // var photoItemsDTO = new List<PhotoItemDTO>();
 
         // foreach (var photoItem in photoItems)
@@ -39,6 +50,7 @@ public class PhotoItemsController : ControllerBase
 
         //     photoItemsDTO.Add(dto);
         // }
+
 
         var photoItemsDTO = photoItems.Select(async photoItem =>
         {
@@ -132,15 +144,13 @@ public class PhotoItemsController : ControllerBase
             Hashtags = photoDTO.Hashtags
         };
 
-        var path = ".";
-        var fullPath = Path.GetFullPath(path);
-        Console.WriteLine(fullPath);
-
         if (!string.IsNullOrEmpty(photoDTO.ImageData))
         {
             var imageBytes = Convert.FromBase64String(photoDTO.ImageData);
             var fileName = Guid.NewGuid().ToString() + ".jpg";
-            var filePath = Path.Combine("/app/images", fileName);
+            //var filePath = Path.Combine("/app/images", fileName);
+            var filePath = Path.Combine("./images", fileName);
+
 
             await System.IO.File.WriteAllBytesAsync(filePath, imageBytes);
             photoItem.ImagePath = fileName;
