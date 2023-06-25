@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Avalon_API.Models;
+using Avalon_API.DAL;
 
 namespace Avalon_API.Controllers;
 
@@ -8,12 +9,12 @@ namespace Avalon_API.Controllers;
 [ApiController]
 public class UsersController : ControllerBase
 {
-    private readonly UserContext _context;
     private readonly ILogger _logger;
+    private IUserRepository _userRepository;
 
     public UsersController(UserContext context, ILogger<UsersController> logger)
     {
-        _context = context;
+        _userRepository = new UserRepository(context);
         _logger = logger;
     }
 
@@ -24,16 +25,15 @@ public class UsersController : ControllerBase
         _logger.LogInformation("GET users at {DT} by user_id: 1", 
             DateTime.UtcNow.ToLongTimeString());
 
-        return await _context.Users
-            .Select(x => ItemToDTO(x))
-            .ToListAsync();
+        var users = await _userRepository.GetUsersAsync();
+        return Ok(users);
     }
 
     // GET: api/Users/5
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetUser(long id)
     {
-        var user = await _context.Users.FindAsync(id);
+        var user = await _userRepository.GetUserByIDAsync(id);
 
         if (user == null)
         {
@@ -56,7 +56,7 @@ public class UsersController : ControllerBase
             return BadRequest();
         }
 
-        var user = await _context.Users.FindAsync(id);
+        var user = await _userRepository.GetUserByIDAsync(id);
         if (user == null)
         {
             return NotFound();
@@ -70,9 +70,9 @@ public class UsersController : ControllerBase
 
         try
         {
-            await _context.SaveChangesAsync();
+            await _userRepository.SaveAsync();
         }
-        catch (DbUpdateConcurrencyException) when (!UserExists(id))
+        catch (DbUpdateConcurrencyException) when (!_userRepository.UserExists(id))
         {
             return NotFound();
         }
@@ -96,8 +96,8 @@ public class UsersController : ControllerBase
             Password = userDTO.Password
         };
 
-        _context.Users.Add(user);
-        await _context.SaveChangesAsync();
+        _userRepository.InsertUser(user);
+        await _userRepository.SaveAsync();
 
         _logger.LogInformation("POST user name: '{NAME}' at {DT} by user_id : 1", 
             userDTO.Name, DateTime.UtcNow.ToLongTimeString());
@@ -112,7 +112,7 @@ public class UsersController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(long id)
     {
-        var user = await _context.Users.FindAsync(id);
+        var user = await _userRepository.GetUserByIDAsync(id);
         if (user == null)
         {
             return NotFound();
@@ -121,8 +121,8 @@ public class UsersController : ControllerBase
         _logger.LogInformation("POST user id: '{ID}' at {DT} by user_id : 1", 
             id, DateTime.UtcNow.ToLongTimeString());
 
-        _context.Users.Remove(user);
-        await _context.SaveChangesAsync();
+        _userRepository.DeleteUser(user);
+        await _userRepository.SaveAsync();
 
         return NoContent();
     }
@@ -131,7 +131,7 @@ public class UsersController : ControllerBase
     [HttpPost("/login")]
     public async Task<ActionResult<UserDTO>> LoginUser(Auth auth)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == auth.Name);
+        var user = await _userRepository.Login(auth);
         if (user == null)
         {
             return NotFound();
@@ -148,19 +148,15 @@ public class UsersController : ControllerBase
         return ItemToDTO(user);
     }
 
-    private bool UserExists(long id)
-    {
-        return _context.Users.Any(e => e.Id == id);
-    }
 
     private static UserDTO ItemToDTO(User user) =>
-       new UserDTO
-       {
-           Id = user.Id,
-           Name = user.Name,
-           ProfilePhoto = user.ProfilePhoto,
-           Package = user.Package,
-           RemainingPhoto = user.RemainingPhoto,
-           Password = user.Password
-       };
+        new UserDTO
+        {
+            Id = user.Id,
+            Name = user.Name,
+            ProfilePhoto = user.ProfilePhoto,
+            Package = user.Package,
+            RemainingPhoto = user.RemainingPhoto,
+            Password = user.Password
+        };
 }
