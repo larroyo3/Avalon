@@ -4,6 +4,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import mitt from 'mitt';
+
 // Vuetify
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
@@ -18,8 +20,11 @@ const vuetify = createVuetify({
   directives,
 })
 
+const emitter = mitt();
+
 const app = createApp(App)
 
 app.use(vuetify)
 app.use(router)
+app.provide('emitter', emitter);
 app.mount('#app')
