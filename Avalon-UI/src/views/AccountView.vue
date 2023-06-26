@@ -45,6 +45,8 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 
+import Singleton from '../Singleton.js';
+
 // Create component
 const FilePond = vueFilePond(
   FilePondPluginFileValidateType,
@@ -56,7 +58,7 @@ export default {
 
   data() {
     return {
-      name: '',
+      name: Singleton.getInstance().getName(),
 
       profilePhoto: '',
       imageSrc: "",

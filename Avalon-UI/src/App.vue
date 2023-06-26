@@ -26,7 +26,7 @@
                 value="create"></v-list-item>
               <v-list-item v-if="userId != 0" prepend-icon="mdi-account" to="/account" title="Account"
                 value="account"></v-list-item>
-                <v-list-item v-if="userId != 0" prepend-icon="mdi-cog" to="/settings" title="Settings"
+              <v-list-item v-if="userId != 0" prepend-icon="mdi-cog" to="/settings" title="Settings"
                 value="settings"></v-list-item>
             </v-list>
           </v-navigation-drawer>
@@ -121,6 +121,7 @@
 
 <script>
 import { RouterView } from 'vue-router'
+import Singleton from './Singleton.js';
 
 export default {
   name: 'App',
@@ -136,7 +137,7 @@ export default {
       timeout: 3000,
 
       valid: false,
-      name: '',
+      name: Singleton.getInstance().getName(),
       password: '',
       remainingPhoto: 3,
       profilePhoto: null,
@@ -191,6 +192,9 @@ export default {
             return Promise.reject(error);
           }
           else {
+            Singleton.getInstance().setName(data.name);
+            this.name = Singleton.getInstance().getName();
+
             this.userId = data.id
             localStorage.setItem('userId', data.id);
           }
@@ -221,6 +225,9 @@ export default {
           }
           else {
             this.dialog = false;
+
+            Singleton.getInstance().setName(data.name);
+            this.name = Singleton.getInstance().getName();
 
             this.userId = data.id
             this.package = data.package
@@ -319,7 +326,7 @@ export default {
 
       if (this.userId != 0) {
         this.fetchGetUserById(this.userId)
-      } 
+      }
     }
   },
 
