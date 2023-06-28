@@ -18,7 +18,7 @@ public class FileLogger : ILogger
 
     public bool IsEnabled(LogLevel logLevel)
     {
-        return true; // Vous pouvez ajuster ce comportement selon votre besoin
+        return true;
     }
 
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)

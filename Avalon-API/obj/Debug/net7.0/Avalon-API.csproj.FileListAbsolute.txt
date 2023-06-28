@@ -30,10 +30,8 @@
 /home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/scopedcss/bundle/Avalon-API.styles.css
 /home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/Avalon-API.csproj.CopyComplete
 /home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/Avalon-API.dll
-/home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/refint/Avalon-API.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/Avalon-API.pdb
 /home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/Avalon-API.genruntimeconfig.cache
-/home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/ref/Avalon-API.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Azure.Core.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Azure.Identity.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Humanizer.dll
@@ -280,3 +278,13 @@
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Castle.Core.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Prometheus.NetStandard.dll
 /home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Prometheus.AspNetCore.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Avalon-API.pssym
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/Avalon-API.pspdb
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/PostSharp.Community.HelloWorld.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/PostSharp.Community.Packer.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/PostSharp.Community.StructuralEquality.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/PostSharp.Community.ToString.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/bin/Debug/net7.0/PostSharp.dll
+/home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/PostSharp/touch
+/home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/PostSharp/AdditionalBuildDependencies.txt
+/home/larroyo/algebra/projects/Avalon/Avalon-API/obj/Debug/net7.0/PostSharp/postsharp.app.config

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9jSaoMfG/WSIGCCesNEikV/wizuLFZdRcIsezUAI989dIEIco9HdSuf2pe9jrHKxEBFPZV4CXpCrMm0mWO6oLA==",
+  "dgSpecHash": "HJvHlHYpK8DFEMFD+myY2SNdcbe0Sx0dQNCETEiAqW4VIcRl+GfrKAtJ68Jj48GK4TkID8dQVi36TJlHkgcOqg==",
   "success": true,
   "projectFilePath": "/home/larroyo/algebra/projects/Avalon/Avalon-API/Avalon-API.csproj",
   "expectedPackageFiles": [
@@ -92,6 +92,12 @@
     "/home/larroyo/.nuget/packages/nuget.projectmodel/6.3.1/nuget.projectmodel.6.3.1.nupkg.sha512",
     "/home/larroyo/.nuget/packages/nuget.protocol/6.3.1/nuget.protocol.6.3.1.nupkg.sha512",
     "/home/larroyo/.nuget/packages/nuget.versioning/6.3.1/nuget.versioning.6.3.1.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp/2023.0.6/postsharp.2023.0.6.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp.community.helloworld/1.4.0/postsharp.community.helloworld.1.4.0.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp.community.packer/1.2.0/postsharp.community.packer.1.2.0.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp.community.structuralequality/1.1.0/postsharp.community.structuralequality.1.1.0.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp.community.tostring/1.3.0/postsharp.community.tostring.1.3.0.nupkg.sha512",
+    "/home/larroyo/.nuget/packages/postsharp.redist/2023.0.6/postsharp.redist.2023.0.6.nupkg.sha512",
     "/home/larroyo/.nuget/packages/prometheus-net/8.0.0/prometheus-net.8.0.0.nupkg.sha512",
     "/home/larroyo/.nuget/packages/prometheus-net.aspnetcore/8.0.0/prometheus-net.aspnetcore.8.0.0.nupkg.sha512",
     "/home/larroyo/.nuget/packages/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl/4.3.0/runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -200,5 +206,36 @@
     "/home/larroyo/.nuget/packages/system.xml.readerwriter/4.3.0/system.xml.readerwriter.4.3.0.nupkg.sha512",
     "/home/larroyo/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: PostSharp.Community.Packer 1.2.0 requires PostSharp (>= 6.6.6 && < 7.0.0) but version PostSharp 2023.0.6 was resolved.",
+      "libraryId": "PostSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: PostSharp.Community.ToString 1.3.0 requires PostSharp (>= 6.6.6 && < 7.0.0) but version PostSharp 2023.0.6 was resolved.",
+      "libraryId": "PostSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: PostSharp.Community.HelloWorld 1.4.0 requires PostSharp (>= 6.6.6 && < 7.0.0) but version PostSharp 2023.0.6 was resolved.",
+      "libraryId": "PostSharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

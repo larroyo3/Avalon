@@ -29,13 +29,14 @@ public class PhotoItemsController : ControllerBase
         List<PhotoItem>? photoItems;
         if (filter != "")
         {
-            var basketSpec = new PhotoSpecification(filter);
-            photoItems = await _context.PhotoItems.Where(basketSpec.Criteria).ToListAsync();
+            var spec = new PhotoSpecification(filter);
+            photoItems = await _context.PhotoItems.Where(spec.Criteria).ToListAsync();
         }
         else
         {
             photoItems = await _context.PhotoItems.ToListAsync();
         }
+        
         // var photoItemsDTO = new List<PhotoItemDTO>();
 
         // foreach (var photoItem in photoItems)

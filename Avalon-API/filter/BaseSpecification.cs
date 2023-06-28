@@ -1,7 +1,6 @@
 using System;
 using System.Linq.Expressions;
 
-// https://github.com/dotnet-architecture/eShopOnWeb
 public abstract class BaseSpecification<T> : ISpecification<T>
 {
     public BaseSpecification(Expression<Func<T, bool>> criteria)

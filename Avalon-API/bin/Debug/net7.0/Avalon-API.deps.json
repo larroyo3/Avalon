@@ -15,6 +15,11 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
           "Microsoft.Extensions.Logging": "7.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.0",
+          "PostSharp": "2023.0.6",
+          "PostSharp.Community.HelloWorld": "1.4.0",
+          "PostSharp.Community.Packer": "1.2.0",
+          "PostSharp.Community.StructuralEquality": "1.1.0",
+          "PostSharp.Community.ToString": "1.3.0",
           "Swashbuckle.AspNetCore": "6.4.0",
           "prometheus-net": "8.0.0",
           "prometheus-net.AspNetCore": "8.0.0"
@@ -1522,6 +1527,63 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "assemblyVersion": "6.3.1.1",
             "fileVersion": "6.3.1.1"
+          }
+        }
+      },
+      "PostSharp/2023.0.6": {
+        "dependencies": {
+          "PostSharp.Redist": "2023.0.6"
+        }
+      },
+      "PostSharp.Community.HelloWorld/1.4.0": {
+        "dependencies": {
+          "PostSharp": "2023.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Community.HelloWorld.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "PostSharp.Community.Packer/1.2.0": {
+        "dependencies": {
+          "PostSharp": "2023.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Community.Packer.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "PostSharp.Community.StructuralEquality/1.1.0": {
+        "dependencies": {
+          "PostSharp": "2023.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Community.StructuralEquality.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "PostSharp.Community.ToString/1.3.0": {
+        "dependencies": {
+          "PostSharp": "2023.0.6"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PostSharp.Community.ToString.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "PostSharp.Redist/2023.0.6": {
+        "runtime": {
+          "lib/net7.0/PostSharp.dll": {
+            "assemblyVersion": "2023.0.6.0",
+            "fileVersion": "2023.0.6.0"
           }
         }
       },
@@ -3068,6 +3130,48 @@
       "sha512": "sha512-T/igBDLXCd+pH3YTWgGVNvYSOwbwaT30NyyM9ONjvlHlmaUjKBJpr9kH0AeL+Ado4EJsBhU3qxXVc6lyrpRcMw==",
       "path": "nuget.versioning/6.3.1",
       "hashPath": "nuget.versioning.6.3.1.nupkg.sha512"
+    },
+    "PostSharp/2023.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DcQxMa8sWvxnE118mWP5Jc2yBGmffemX3l2b9qHyDD3Sg4KWEXZtv5wn1w7NIMXo4oHqyfdyqjmA/odu+MBXnQ==",
+      "path": "postsharp/2023.0.6",
+      "hashPath": "postsharp.2023.0.6.nupkg.sha512"
+    },
+    "PostSharp.Community.HelloWorld/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RqjOema5XzslNlNiTPAv5wltZzhc1fTVU0zpmyJagDGm2mH6GcXTv3cGcb9bjmb325w1BOs/ecjtJW1tqAN/dg==",
+      "path": "postsharp.community.helloworld/1.4.0",
+      "hashPath": "postsharp.community.helloworld.1.4.0.nupkg.sha512"
+    },
+    "PostSharp.Community.Packer/1.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AwC9K+oihDENS/cIxleigy57Cas1f6J+ecbqQYU7ZHu9zNBV37hlA5FllEEd+H09jheLhOKpCv34EqkDYzbUiA==",
+      "path": "postsharp.community.packer/1.2.0",
+      "hashPath": "postsharp.community.packer.1.2.0.nupkg.sha512"
+    },
+    "PostSharp.Community.StructuralEquality/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-btFfRTzd7ahSFJu70WWkDveRPA57qCP8E+b/U1ubFjUQZdh6Q56XYfJG+JyBaszs87tsh07Sd7fPgKzG9XcVGw==",
+      "path": "postsharp.community.structuralequality/1.1.0",
+      "hashPath": "postsharp.community.structuralequality.1.1.0.nupkg.sha512"
+    },
+    "PostSharp.Community.ToString/1.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-luvjcSVyiTnFLBVimFs5+jxM/rmWEqe1MM18mTgrIDEGu4Iuny3JMCbUpa8DwdGBqWziICBuWMa/R0uliZw0nQ==",
+      "path": "postsharp.community.tostring/1.3.0",
+      "hashPath": "postsharp.community.tostring.1.3.0.nupkg.sha512"
+    },
+    "PostSharp.Redist/2023.0.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Is91u+CeMriw5AGrWRMR+oxJlr7k9GjnQXLnhqjF/h/EkvtpAQn9HS+01Io2HXNTe9nv/nsiFiWybG/jVmDA6g==",
+      "path": "postsharp.redist/2023.0.6",
+      "hashPath": "postsharp.redist.2023.0.6.nupkg.sha512"
     },
     "prometheus-net/8.0.0": {
       "type": "package",

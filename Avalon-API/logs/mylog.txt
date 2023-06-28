@@ -41,3 +41,144 @@
 6/15/2023 9:55:25 PM [Information] Hosting environment: Development
 6/15/2023 9:55:25 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
 6/15/2023 9:58:04 PM [Information] Application is shutting down...
+6/26/2023 2:15:47 PM [Information] Now listening on: http://localhost:9001
+6/26/2023 2:15:47 PM [Information] Application started. Press Ctrl+C to shut down.
+6/26/2023 2:15:47 PM [Information] Hosting environment: Development
+6/26/2023 2:15:47 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/26/2023 2:15:53 PM [Warning] Failed to determine the https port for redirect.
+6/26/2023 2:15:54 PM [Error] An unhandled exception has occurred while executing the request.
+6/26/2023 2:15:56 PM [Error] An unhandled exception has occurred while executing the request.
+6/26/2023 2:15:58 PM [Information] GET photos at 2:15:58 PM by user_id: 1
+6/26/2023 2:16:30 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:16:30 PM [Information] POST user name: 'admin' at 2:16:30 PM by user_id : 1
+6/26/2023 2:16:36 PM [Information] GET user by Id at 2:16:36 PM by user_id: 1
+6/26/2023 2:16:39 PM [Information] GET user by Id at 2:16:39 PM by user_id: 1
+6/26/2023 2:16:42 PM [Information] GET photos at 2:16:42 PM by user_id: 1
+6/26/2023 2:16:51 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:16:51 PM [Information] POST user name: 'lucas' at 2:16:51 PM by user_id : 1
+6/26/2023 2:16:56 PM [Information] GET user by Id at 2:16:56 PM by user_id: 1
+6/26/2023 2:16:58 PM [Information] GET user by Id at 2:16:58 PM by user_id: 1
+6/26/2023 2:16:59 PM [Information] GET user by Id at 2:16:59 PM by user_id: 1
+6/26/2023 2:17:03 PM [Information] GET photos at 2:17:03 PM by user_id: 1
+6/26/2023 2:17:10 PM [Information] POST user name: 'lucas' at 2:17:10 PM by user_id : 1
+6/26/2023 2:17:13 PM [Information] GET user by Id at 2:17:13 PM by user_id: 1
+6/26/2023 2:17:15 PM [Information] GET photos at 2:17:15 PM by user_id: 1
+6/26/2023 2:17:17 PM [Information] GET user by Id at 2:17:17 PM by user_id: 1
+6/26/2023 2:17:41 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:17:41 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:17:41 PM [Information] POST photo id: '0' at 2:17:41 PM by author_id : '2'
+6/26/2023 2:17:42 PM [Information] GET user by Id at 2:17:42 PM by user_id: 1
+6/26/2023 2:17:44 PM [Information] GET photos at 2:17:44 PM by user_id: 1
+6/26/2023 2:17:44 PM [Information] GET user by Id at 2:17:44 PM by user_id: 1
+6/26/2023 2:17:55 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:17:55 PM [Information] PUT photo id: '1' at 2:17:55 PM by author_id : '2'
+6/26/2023 2:18:19 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:18:19 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:18:19 PM [Information] POST photo id: '0' at 2:18:19 PM by author_id : '2'
+6/26/2023 2:18:19 PM [Information] GET user by Id at 2:18:19 PM by user_id: 1
+6/26/2023 2:18:23 PM [Information] GET photos at 2:18:23 PM by user_id: 1
+6/26/2023 2:18:23 PM [Information] GET user by Id at 2:18:23 PM by user_id: 1
+6/26/2023 2:18:23 PM [Information] GET user by Id at 2:18:23 PM by user_id: 1
+6/26/2023 2:18:26 PM [Information] GET user by Id at 2:18:26 PM by user_id: 1
+6/26/2023 2:18:33 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:18:33 PM [Information] PUT user name: 'lucas' at 2:18:33 PM by user_id : 1
+6/26/2023 2:18:33 PM [Information] GET user by Id at 2:18:33 PM by user_id: 1
+6/26/2023 2:18:35 PM [Information] GET photos at 2:18:35 PM by user_id: 1
+6/26/2023 2:18:35 PM [Information] GET user by Id at 2:18:35 PM by user_id: 1
+6/26/2023 2:18:35 PM [Information] GET user by Id at 2:18:35 PM by user_id: 1
+6/26/2023 2:18:43 PM [Information] GET photos at 2:18:43 PM by user_id: 1
+6/26/2023 2:18:43 PM [Information] GET user by Id at 2:18:43 PM by user_id: 1
+6/26/2023 2:18:43 PM [Information] GET user by Id at 2:18:43 PM by user_id: 1
+6/26/2023 2:18:47 PM [Information] GET user by Id at 2:18:47 PM by user_id: 1
+6/26/2023 2:18:50 PM [Information] GET photos at 2:18:50 PM by user_id: 1
+6/26/2023 2:18:50 PM [Information] GET user by Id at 2:18:50 PM by user_id: 1
+6/26/2023 2:18:50 PM [Information] GET user by Id at 2:18:50 PM by user_id: 1
+6/26/2023 2:19:09 PM [Information] GET photos at 2:19:09 PM by user_id: 1
+6/26/2023 2:19:09 PM [Information] GET user by Id at 2:19:09 PM by user_id: 1
+6/26/2023 2:19:09 PM [Information] GET user by Id at 2:19:09 PM by user_id: 1
+6/26/2023 2:19:42 PM [Information] GET user by Id at 2:19:42 PM by user_id: 1
+6/26/2023 2:19:45 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 2:19:45 PM [Information] PUT user name: 'lucas' at 2:19:45 PM by user_id : 1
+6/26/2023 2:19:45 PM [Information] GET user by Id at 2:19:45 PM by user_id: 1
+6/26/2023 2:20:03 PM [Information] GET photos at 2:20:03 PM by user_id: 1
+6/26/2023 2:20:03 PM [Information] GET user by Id at 2:20:03 PM by user_id: 1
+6/26/2023 2:20:03 PM [Information] GET user by Id at 2:20:03 PM by user_id: 1
+6/26/2023 2:20:08 PM [Information] GET user by Id at 2:20:08 PM by user_id: 1
+6/26/2023 2:20:13 PM [Information] GET photos at 2:20:13 PM by user_id: 1
+6/26/2023 2:20:14 PM [Information] GET user by Id at 2:20:14 PM by user_id: 1
+6/26/2023 2:20:14 PM [Information] GET user by Id at 2:20:14 PM by user_id: 1
+6/26/2023 2:20:18 PM [Information] GET photos at 2:20:18 PM by user_id: 1
+6/26/2023 2:20:19 PM [Information] GET user by Id at 2:20:19 PM by user_id: 1
+6/26/2023 2:20:19 PM [Information] GET user by Id at 2:20:19 PM by user_id: 1
+6/26/2023 2:21:19 PM [Information] POST user name: 'admin' at 2:21:19 PM by user_id : 1
+6/26/2023 2:21:30 PM [Information] GET photos at 2:21:30 PM by user_id: 1
+6/26/2023 2:21:30 PM [Information] GET user by Id at 2:21:30 PM by user_id: 1
+6/26/2023 2:21:30 PM [Information] GET user by Id at 2:21:30 PM by user_id: 1
+6/26/2023 2:21:34 PM [Information] GET user by Id at 2:21:34 PM by user_id: 1
+6/26/2023 2:21:34 PM [Information] GET photos at 2:21:34 PM by user_id: 1
+6/26/2023 2:21:35 PM [Information] GET user by Id at 2:21:35 PM by user_id: 1
+6/26/2023 2:21:35 PM [Information] GET user by Id at 2:21:35 PM by user_id: 1
+6/26/2023 2:21:41 PM [Information] GET user by Id at 2:21:41 PM by user_id: 1
+6/26/2023 2:21:43 PM [Information] GET photos at 2:21:43 PM by user_id: 1
+6/26/2023 2:21:43 PM [Information] GET user by Id at 2:21:43 PM by user_id: 1
+6/26/2023 2:21:43 PM [Information] GET user by Id at 2:21:43 PM by user_id: 1
+6/26/2023 3:02:59 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:02:59 PM [Information] POST user name: 'exam' at 3:02:59 PM by user_id : 1
+6/26/2023 3:03:05 PM [Information] GET user by Id at 3:03:05 PM by user_id: 1
+6/26/2023 3:03:14 PM [Information] GET photos at 3:03:14 PM by user_id: 1
+6/26/2023 3:03:14 PM [Information] GET user by Id at 3:03:14 PM by user_id: 1
+6/26/2023 3:03:14 PM [Information] GET user by Id at 3:03:14 PM by user_id: 1
+6/26/2023 3:04:14 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:04:14 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:04:14 PM [Information] POST photo id: '0' at 3:04:14 PM by author_id : '3'
+6/26/2023 3:04:14 PM [Information] GET user by Id at 3:04:14 PM by user_id: 1
+6/26/2023 3:04:19 PM [Information] GET photos at 3:04:19 PM by user_id: 1
+6/26/2023 3:04:19 PM [Information] GET user by Id at 3:04:19 PM by user_id: 1
+6/26/2023 3:04:19 PM [Information] GET user by Id at 3:04:19 PM by user_id: 1
+6/26/2023 3:04:19 PM [Information] GET user by Id at 3:04:19 PM by user_id: 1
+6/26/2023 3:04:33 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:04:33 PM [Information] PUT photo id: '3' at 3:04:33 PM by author_id : '3'
+6/26/2023 3:04:37 PM [Information] GET user by Id at 3:04:37 PM by user_id: 1
+6/26/2023 3:04:37 PM [Information] GET photos at 3:04:37 PM by user_id: 1
+6/26/2023 3:04:37 PM [Information] GET user by Id at 3:04:37 PM by user_id: 1
+6/26/2023 3:04:37 PM [Information] GET user by Id at 3:04:37 PM by user_id: 1
+6/26/2023 3:04:37 PM [Information] GET user by Id at 3:04:37 PM by user_id: 1
+6/26/2023 3:04:47 PM [Information] GET user by Id at 3:04:47 PM by user_id: 1
+6/26/2023 3:04:59 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:04:59 PM [Information] PUT user name: 'exam' at 3:04:59 PM by user_id : 1
+6/26/2023 3:04:59 PM [Information] GET user by Id at 3:04:59 PM by user_id: 1
+6/26/2023 3:05:19 PM [Information] GET photos at 3:05:19 PM by user_id: 1
+6/26/2023 3:05:19 PM [Information] GET user by Id at 3:05:19 PM by user_id: 1
+6/26/2023 3:05:19 PM [Information] GET user by Id at 3:05:19 PM by user_id: 1
+6/26/2023 3:05:19 PM [Information] GET user by Id at 3:05:19 PM by user_id: 1
+6/26/2023 3:05:24 PM [Information] GET user by Id at 3:05:24 PM by user_id: 1
+6/26/2023 3:05:26 PM [Information] GET photos at 3:05:26 PM by user_id: 1
+6/26/2023 3:05:26 PM [Information] GET user by Id at 3:05:26 PM by user_id: 1
+6/26/2023 3:05:26 PM [Information] GET user by Id at 3:05:26 PM by user_id: 1
+6/26/2023 3:05:26 PM [Information] GET user by Id at 3:05:26 PM by user_id: 1
+6/26/2023 3:05:37 PM [Information] POST user name: 'lucas' at 3:05:37 PM by user_id : 1
+6/26/2023 3:05:48 PM [Information] GET user by Id at 3:05:48 PM by user_id: 1
+6/26/2023 3:05:52 PM [Information] Saved 1 entities to in-memory store.
+6/26/2023 3:05:52 PM [Information] PUT user name: 'test lucas' at 3:05:52 PM by user_id : 1
+6/26/2023 3:05:52 PM [Information] GET user by Id at 3:05:52 PM by user_id: 1
+6/26/2023 3:05:56 PM [Information] GET photos at 3:05:56 PM by user_id: 1
+6/26/2023 3:05:56 PM [Information] GET user by Id at 3:05:56 PM by user_id: 1
+6/26/2023 3:05:56 PM [Information] GET user by Id at 3:05:56 PM by user_id: 1
+6/26/2023 3:05:56 PM [Information] GET user by Id at 3:05:56 PM by user_id: 1
+6/26/2023 3:06:04 PM [Information] GET user by Id at 3:06:04 PM by user_id: 1
+6/26/2023 3:06:06 PM [Information] GET photos at 3:06:06 PM by user_id: 1
+6/26/2023 3:06:06 PM [Information] GET user by Id at 3:06:06 PM by user_id: 1
+6/26/2023 3:06:06 PM [Information] GET user by Id at 3:06:06 PM by user_id: 1
+6/26/2023 3:06:06 PM [Information] GET user by Id at 3:06:06 PM by user_id: 1
+6/26/2023 3:06:15 PM [Information] POST user name: 'admin' at 3:06:15 PM by user_id : 1
+6/26/2023 3:06:27 PM [Information] GET photos at 3:06:27 PM by user_id: 1
+6/26/2023 3:06:28 PM [Information] GET user by Id at 3:06:28 PM by user_id: 1
+6/26/2023 3:06:28 PM [Information] GET user by Id at 3:06:28 PM by user_id: 1
+6/28/2023 11:18:33 PM [Information] Now listening on: http://localhost:9001
+6/28/2023 11:18:33 PM [Information] Application started. Press Ctrl+C to shut down.
+6/28/2023 11:18:33 PM [Information] Hosting environment: Development
+6/28/2023 11:18:33 PM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/28/2023 11:19:00 PM [Warning] Failed to determine the https port for redirect.
+6/28/2023 11:19:00 PM [Information] Saved 1 entities to in-memory store.
+6/28/2023 11:19:06 PM [Information] Saved 1 entities to in-memory store.
+6/28/2023 11:19:14 PM [Information] Application is shutting down...

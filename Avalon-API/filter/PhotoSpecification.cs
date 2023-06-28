@@ -2,13 +2,13 @@ using Avalon_API.Models;
 
 public class PhotoSpecification : BaseSpecification<PhotoItem>
 {
-    public PhotoSpecification(int basketId)
-        : base(b => b.AuthorId == basketId)
+    public PhotoSpecification(int id)
+        : base(b => b.AuthorId == id)
     {
         AddInclude(b => b);
     }
-    public PhotoSpecification(string buyerId)
-        : base(b => b.Hashtags == buyerId)
+    public PhotoSpecification(string item)
+        : base(b => b.Hashtags == item)
     {
         AddInclude(b => b);
     }
