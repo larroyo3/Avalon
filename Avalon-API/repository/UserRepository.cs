@@ -22,12 +22,13 @@ namespace Avalon_API.DAL
             return await context.Users.Select(x => ItemToDTO(x)).ToListAsync();
         }
 
+        [ErrorHandlingAspect]
         public async Task<User> GetUserByIDAsync(long id)
         {
             var item = await context.Users.FindAsync(id);
             if (item == null)
             {
-                throw new Exception();
+                throw new Exception("Item is null");
             }
 
             return item;
@@ -89,12 +90,13 @@ namespace Avalon_API.DAL
             return context.Users.Any(e => e.Id == id);
         }
 
+        [ErrorHandlingAspect]
         public async Task<User> Login(Auth auth)
         {
             var user = await context.Users.FirstOrDefaultAsync(u => u.Name == auth.Name);
             if (user == null)
             {
-                throw new Exception();
+                throw new Exception("Item is null");
             }
 
             return user;

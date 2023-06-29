@@ -99,8 +99,7 @@ public class PhotoItemsController : ControllerBase
     }
 
     // PUT: api/PhotoItems/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    // <snippet_Update>
+    [ErrorHandlingAspect]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPhotoItem(long id, PhotoItemDTO photoDTO)
     {
@@ -134,6 +133,7 @@ public class PhotoItemsController : ControllerBase
     }
 
     // POST: api/PhotoItems
+    [ErrorHandlingAspect]
     [HttpPost]
     public async Task<ActionResult<PhotoItemDTO>> PostPhotoItem(PhotoItemDTO photoDTO)
     {

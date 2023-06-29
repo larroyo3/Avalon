@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Avalon_API</RootNamespace>
+    <AllowUnsafeBinaryFormatter>true</AllowUnsafeBinaryFormatter>
   </PropertyGroup>
 
   <ItemGroup>

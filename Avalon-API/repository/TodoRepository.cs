@@ -22,12 +22,13 @@ namespace Avalon_API.DAL
             return await context.TodoItems.Select(x => ItemToDTO(x)).ToListAsync();
         }
 
+        [ErrorHandlingAspect]
         public async Task<TodoItem> GetTodoItemByIDAsync(long id)
         {
             var item = await context.TodoItems.FindAsync(id);
             if (item == null)
             {
-                throw new Exception();
+                throw new Exception("Item is null");
             }
 
             return item;
