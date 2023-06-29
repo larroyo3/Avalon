@@ -24,6 +24,7 @@ public class PhotoItemsController : ControllerBase
 
     // GET: api/PhotoItems
     [HttpGet]
+    [TimerAspect]
     public async Task<ActionResult<IEnumerable<PhotoItemDTO>>> GetPhotoItems([FromQuery(Name = "filter")] string filter = "")
     {
         List<PhotoItem>? photoItems;
@@ -74,6 +75,7 @@ public class PhotoItemsController : ControllerBase
 
     // GET: api/PhotoItems/5
     // <snippet_GetByID>
+    [TimerAspect]
     [HttpGet("{id}")]
     public async Task<ActionResult<PhotoItemDTO>> GetPhotoItem(long id)
     {
@@ -99,8 +101,8 @@ public class PhotoItemsController : ControllerBase
     }
 
     // PUT: api/PhotoItems/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    // <snippet_Update>
+    [ErrorHandlingAspect]
+    [TimerAspect]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutPhotoItem(long id, PhotoItemDTO photoDTO)
     {
@@ -134,6 +136,8 @@ public class PhotoItemsController : ControllerBase
     }
 
     // POST: api/PhotoItems
+    [ErrorHandlingAspect]
+    [TimerAspect]
     [HttpPost]
     public async Task<ActionResult<PhotoItemDTO>> PostPhotoItem(PhotoItemDTO photoDTO)
     {
@@ -187,6 +191,7 @@ public class PhotoItemsController : ControllerBase
 
     // DELETE: api/PhotoItems/5
     [HttpDelete("{id}")]
+    [TimerAspect]
     public async Task<IActionResult> DeletePhotoItem(long id)
     {
         var photoItem = await _context.PhotoItems.FindAsync(id);

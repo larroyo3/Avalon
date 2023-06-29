@@ -17,32 +17,38 @@ namespace Avalon_API.DAL
             this.context = context;
         }
 
+        [TimerAspect]
         public async Task<IEnumerable<UserDTO>> GetUsersAsync()
         {
             return await context.Users.Select(x => ItemToDTO(x)).ToListAsync();
         }
 
+        [ErrorHandlingAspect]
+        [TimerAspect]
         public async Task<User> GetUserByIDAsync(long id)
         {
             var item = await context.Users.FindAsync(id);
             if (item == null)
             {
-                throw new Exception();
+                throw new Exception("Item is null");
             }
 
             return item;
         }
 
+        [TimerAspect]
         public void InsertUser(User item)
         {
             context.Users.Add(item);
         }
 
+        [TimerAspect]
         public void DeleteUser(User item)
         {
             context.Users.Remove(item);
         }
 
+        [TimerAspect]
         public void UpdateUser(User item)
         {
             context.Entry(item).State = EntityState.Modified;
@@ -84,17 +90,19 @@ namespace Avalon_API.DAL
             Password = user.Password
         };
 
+        [TimerAspect]
         public bool UserExists(long id)
         {
             return context.Users.Any(e => e.Id == id);
         }
 
+        [ErrorHandlingAspect]
         public async Task<User> Login(Auth auth)
         {
             var user = await context.Users.FirstOrDefaultAsync(u => u.Name == auth.Name);
             if (user == null)
             {
-                throw new Exception();
+                throw new Exception("Item is null");
             }
 
             return user;

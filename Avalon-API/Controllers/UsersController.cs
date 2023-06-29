@@ -48,6 +48,7 @@ public class UsersController : ControllerBase
 
     // PUT: api/Users/5
     [HttpPut("{id}")]
+    [ErrorHandlingAspect]
     public async Task<IActionResult> PutUser(long id, UserDTO userDTO)
     {
 

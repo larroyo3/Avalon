@@ -39,6 +39,7 @@ public class TodoItemsController : ControllerBase
     }
 
     // PUT: api/TodoItems/5
+    [ErrorHandlingAspect]
     [HttpPut("{id}")]
     public async Task<IActionResult> PutTodoItem(long id, TodoItemDTO todoDTO)
     {
