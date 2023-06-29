@@ -250,3 +250,48 @@
 6/29/2023 12:34:27 AM [Warning] Failed to determine the https port for redirect.
 6/29/2023 12:34:27 AM [Error] An unhandled exception has occurred while executing the request.
 6/29/2023 12:38:58 AM [Information] Application is shutting down...
+6/29/2023 12:48:40 AM [Information] Now listening on: http://localhost:9001
+6/29/2023 12:48:40 AM [Information] Application started. Press Ctrl+C to shut down.
+6/29/2023 12:48:40 AM [Information] Hosting environment: Development
+6/29/2023 12:48:40 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/29/2023 12:49:14 AM [Information] Application is shutting down...
+6/29/2023 12:49:22 AM [Information] Now listening on: http://localhost:9001
+6/29/2023 12:49:22 AM [Information] Application started. Press Ctrl+C to shut down.
+6/29/2023 12:49:22 AM [Information] Hosting environment: Development
+6/29/2023 12:49:22 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/29/2023 12:49:42 AM [Warning] Failed to determine the https port for redirect.
+6/29/2023 12:49:42 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:50:06 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:51:08 AM [Information] Application is shutting down...
+6/29/2023 12:51:15 AM [Information] Now listening on: http://localhost:9001
+6/29/2023 12:51:15 AM [Information] Application started. Press Ctrl+C to shut down.
+6/29/2023 12:51:15 AM [Information] Hosting environment: Development
+6/29/2023 12:51:15 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/29/2023 12:51:37 AM [Warning] Failed to determine the https port for redirect.
+6/29/2023 12:51:37 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:51:41 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:52:00 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:52:12 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:52:43 AM [Information] Application is shutting down...
+6/29/2023 12:52:50 AM [Information] Now listening on: http://localhost:9001
+6/29/2023 12:52:50 AM [Information] Application started. Press Ctrl+C to shut down.
+6/29/2023 12:52:50 AM [Information] Hosting environment: Development
+6/29/2023 12:52:50 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/29/2023 12:52:58 AM [Warning] Failed to determine the https port for redirect.
+6/29/2023 12:52:58 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:53:00 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:54:50 AM [Information] Application is shutting down...
+6/29/2023 12:54:58 AM [Information] Now listening on: http://localhost:9001
+6/29/2023 12:54:58 AM [Information] Application started. Press Ctrl+C to shut down.
+6/29/2023 12:54:58 AM [Information] Hosting environment: Development
+6/29/2023 12:54:58 AM [Information] Content root path: /home/larroyo/algebra/projects/Avalon/Avalon-API
+6/29/2023 12:55:09 AM [Warning] Failed to determine the https port for redirect.
+6/29/2023 12:55:10 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:55:19 AM [Information] GET photos at 12:55:19 AM by user_id: 1
+6/29/2023 12:55:27 AM [Information] GET photo by id at 12:55:27 AM by user_id: 1
+6/29/2023 12:55:32 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:55:35 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:55:38 AM [Information] GET photos at 12:55:38 AM by user_id: 1
+6/29/2023 12:55:44 AM [Information] Saved 1 entities to in-memory store.
+6/29/2023 12:55:44 AM [Information] PUT photo at 12:55:44 AM by author_id : '1'
+6/29/2023 12:55:48 AM [Information] Application is shutting down...

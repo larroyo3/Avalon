@@ -1,17 +1,145 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Symbols LinesOfCode="804" PostSharpLinesOfCode="0" EnhancedTypesCount="2" SchemaVersion="1" PostSharpVersion="2023.0.6.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
-  <Evolution Source="#1=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::GetTodoItemByIDAsync(System.Int64)" Target="#2=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository+&lt;GetTodoItemByIDAsync&gt;d__3::MoveNext()" />
-  <Class Class="#3=T:[PostSharp]PostSharp.Serialization.PSerializableAttribute">
-    <Instance Declaration="#4=T:[Avalon-API]ErrorHandlingAspect" Id="81f0f0cb00008005">
+<Symbols LinesOfCode="812" PostSharpLinesOfCode="0" EnhancedTypesCount="7" SchemaVersion="1" PostSharpVersion="2023.0.6.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Evolution Source="#1=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::GetTodoItemsAsync()" Target="#2=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository+&lt;GetTodoItemsAsync&gt;d__2::MoveNext()" />
+  <Evolution Source="#3=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::GetTodoItemByIDAsync(System.Int64)" Target="#4=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository+&lt;GetTodoItemByIDAsync&gt;d__3::MoveNext()" />
+  <Evolution Source="#5=M:[Avalon-API]Avalon_API.DAL.UserRepository::GetUsersAsync()" Target="#6=M:[Avalon-API]Avalon_API.DAL.UserRepository+&lt;GetUsersAsync&gt;d__2::MoveNext()" />
+  <Evolution Source="#7=M:[Avalon-API]Avalon_API.DAL.UserRepository::GetUserByIDAsync(System.Int64)" Target="#8=M:[Avalon-API]Avalon_API.DAL.UserRepository+&lt;GetUserByIDAsync&gt;d__3::MoveNext()" />
+  <Evolution Source="#9=M:[Avalon-API]Avalon_API.DAL.UserRepository::Login([Avalon-API]Avalon_API.Models.Auth)" Target="#10=M:[Avalon-API]Avalon_API.DAL.UserRepository+&lt;Login&gt;d__13::MoveNext()" />
+  <Evolution Source="#11=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController::GetPhotoItems(System.String)" Target="#12=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController+&lt;GetPhotoItems&gt;d__4::MoveNext()" />
+  <Evolution Source="#13=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController::GetPhotoItem(System.Int64)" Target="#14=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController+&lt;GetPhotoItem&gt;d__5::MoveNext()" />
+  <Evolution Source="#15=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController::PutPhotoItem(System.Int64, [Avalon-API]Avalon_API.Models.PhotoItemDTO)" Target="#16=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController+&lt;PutPhotoItem&gt;d__6::MoveNext()" />
+  <Evolution Source="#17=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController::PostPhotoItem([Avalon-API]Avalon_API.Models.PhotoItemDTO)" Target="#18=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController+&lt;PostPhotoItem&gt;d__7::MoveNext()" />
+  <Evolution Source="#19=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController::DeletePhotoItem(System.Int64)" Target="#20=M:[Avalon-API]Avalon_API.Controllers.PhotoItemsController+&lt;DeletePhotoItem&gt;d__8::MoveNext()" />
+  <Evolution Source="#21=M:[Avalon-API]Avalon_API.Controllers.TodoItemsController::PutTodoItem(System.Int64, [Avalon-API]Avalon_API.Models.TodoItemDTO)" Target="#22=M:[Avalon-API]Avalon_API.Controllers.TodoItemsController+&lt;PutTodoItem&gt;d__4::MoveNext()" />
+  <Evolution Source="#23=M:[Avalon-API]Avalon_API.Controllers.UsersController::PutUser(System.Int64, [Avalon-API]Avalon_API.Models.UserDTO)" Target="#24=M:[Avalon-API]Avalon_API.Controllers.UsersController+&lt;PutUser&gt;d__5::MoveNext()" />
+  <Class Class="#25=T:[PostSharp]PostSharp.Serialization.PSerializableAttribute">
+    <Instance Declaration="#26=T:[Avalon-API]ErrorHandlingAspect" Id="81f0f0cb00008005">
+      <Target />
+    </Instance>
+    <Instance Declaration="#27=T:[Avalon-API]TimerAspect" Id="81f0f0cb00008006">
       <Target />
     </Instance>
   </Class>
-  <Class Class="#4">
-    <Instance Declaration="#1" Id="81f0f0cb00008007">
+  <Class Class="#26">
+    <Instance Declaration="#3" Id="81f0f0cb00008008">
       <Target LinesAvoided="2">
-        <JoinPoint Description="#5=Wrapped by advice(s) OnException" Ordinal="0" />
+        <JoinPoint Description="#28=Wrapped by advice(s) OnException" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#7" Id="81f0f0cb00008009">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="7" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#9" Id="81f0f0cb0000800a">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="13" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#15" Id="81f0f0cb0000800b">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="16" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#17" Id="81f0f0cb0000800c">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="18" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#21" Id="81f0f0cb0000800d">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="21" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#23" Id="81f0f0cb0000800e">
+      <Target LinesAvoided="2">
+        <JoinPoint Description="#28" Ordinal="22" />
       </Target>
     </Instance>
   </Class>
-  <Annotation Target="#6=M:[Avalon-API]ErrorHandlingAspect::OnException(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#7=2" Description="#8=PostSharp estimates that 2 lines of code are saved every time this advice is applied. Use the [LinesOfCodeAvoided] attribute on the aspect or specify the LinesOfCodeAvoided property on the advice attribute to override this value." />
+  <Class Class="#27">
+    <Instance Declaration="#1" Id="81f0f0cb0000800f">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29=Wrapped by advice(s) OnEntry, OnSuccess" Ordinal="0" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#3" Id="81f0f0cb00008010">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="2" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#30=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::InsertTodoItem([Avalon-API]Avalon_API.Models.TodoItem)" Id="81f0f0cb00008011">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="3" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#31=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::DeleteTodoItem([Avalon-API]Avalon_API.Models.TodoItem)" Id="81f0f0cb00008012">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#32=M:[Avalon-API]Avalon_API.DAL.TodoItemRepository::TodoItemExists(System.Int64)" Id="81f0f0cb00008013">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="5" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#5" Id="81f0f0cb00008014">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="6" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#7" Id="81f0f0cb00008015">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="8" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#33=M:[Avalon-API]Avalon_API.DAL.UserRepository::InsertUser([Avalon-API]Avalon_API.Models.User)" Id="81f0f0cb00008016">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="9" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#34=M:[Avalon-API]Avalon_API.DAL.UserRepository::DeleteUser([Avalon-API]Avalon_API.Models.User)" Id="81f0f0cb00008017">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="10" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#35=M:[Avalon-API]Avalon_API.DAL.UserRepository::UpdateUser([Avalon-API]Avalon_API.Models.User)" Id="81f0f0cb00008018">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="11" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#36=M:[Avalon-API]Avalon_API.DAL.UserRepository::UserExists(System.Int64)" Id="81f0f0cb00008019">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="12" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#11" Id="81f0f0cb0000801a">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="14" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#13" Id="81f0f0cb0000801b">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="15" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#15" Id="81f0f0cb0000801c">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="17" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#17" Id="81f0f0cb0000801d">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="19" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#19" Id="81f0f0cb0000801e">
+      <Target LinesAvoided="4">
+        <JoinPoint Description="#29" Ordinal="20" />
+      </Target>
+    </Instance>
+  </Class>
+  <Annotation Target="#37=M:[Avalon-API]TimerAspect::OnEntry(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#38=2" Description="#39=PostSharp estimates that 2 lines of code are saved every time this advice is applied. Use the [LinesOfCodeAvoided] attribute on the aspect or specify the LinesOfCodeAvoided property on the advice attribute to override this value." />
+  <Annotation Target="#40=M:[Avalon-API]TimerAspect::OnSuccess(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#38" Description="#39" />
+  <Annotation Target="#41=M:[Avalon-API]ErrorHandlingAspect::OnException(PostSharp.Aspects.MethodExecutionArgs)" Arguments="#38" Description="#39" />
 </Symbols>

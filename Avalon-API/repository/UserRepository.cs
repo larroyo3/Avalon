@@ -17,12 +17,14 @@ namespace Avalon_API.DAL
             this.context = context;
         }
 
+        [TimerAspect]
         public async Task<IEnumerable<UserDTO>> GetUsersAsync()
         {
             return await context.Users.Select(x => ItemToDTO(x)).ToListAsync();
         }
 
         [ErrorHandlingAspect]
+        [TimerAspect]
         public async Task<User> GetUserByIDAsync(long id)
         {
             var item = await context.Users.FindAsync(id);
@@ -34,16 +36,19 @@ namespace Avalon_API.DAL
             return item;
         }
 
+        [TimerAspect]
         public void InsertUser(User item)
         {
             context.Users.Add(item);
         }
 
+        [TimerAspect]
         public void DeleteUser(User item)
         {
             context.Users.Remove(item);
         }
 
+        [TimerAspect]
         public void UpdateUser(User item)
         {
             context.Entry(item).State = EntityState.Modified;
@@ -85,6 +90,7 @@ namespace Avalon_API.DAL
             Password = user.Password
         };
 
+        [TimerAspect]
         public bool UserExists(long id)
         {
             return context.Users.Any(e => e.Id == id);

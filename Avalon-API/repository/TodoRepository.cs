@@ -17,11 +17,13 @@ namespace Avalon_API.DAL
             this.context = context;
         }
 
+        [TimerAspect]
         public async Task<IEnumerable<TodoItemDTO>> GetTodoItemsAsync()
         {
             return await context.TodoItems.Select(x => ItemToDTO(x)).ToListAsync();
         }
 
+        [TimerAspect]
         [ErrorHandlingAspect]
         public async Task<TodoItem> GetTodoItemByIDAsync(long id)
         {
@@ -34,11 +36,13 @@ namespace Avalon_API.DAL
             return item;
         }
 
+        [TimerAspect]
         public void InsertTodoItem(TodoItem item)
         {
             context.TodoItems.Add(item);
         }
 
+        [TimerAspect]
         public void DeleteTodoItem(TodoItem item)
         {
             context.TodoItems.Remove(item);
@@ -82,6 +86,7 @@ namespace Avalon_API.DAL
             IsComplete = todoItem.IsComplete
         };
 
+        [TimerAspect]
         public bool TodoItemExists(long id)
         {
             return context.TodoItems.Any(e => e.Id == id);
